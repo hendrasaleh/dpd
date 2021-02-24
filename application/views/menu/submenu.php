@@ -41,6 +41,7 @@
 				      <th scope="col">Menu</th>
 				      <th scope="col">Url</th>
 				      <th scope="col">Icon</th>
+				      <th scope="col">Sequence</th>
 				      <th scope="col">Active</th>
 				      <th scope="col">Action</th>
 				    </tr>
@@ -56,6 +57,7 @@
 				      <td><?= $sm['menu']; ?></td>
 				      <td><?= $sm['url']; ?></td>
 				      <td><?= $sm['icon']; ?></td>
+				      <td><?= $sm['submenu_sequence']; ?></td>
 				      <td><?= $sm['is_active']; ?></td>
 				      <td>
 				      		<a href="editsubmenu/<?= $sm['id']; ?>" class="badge badge-success">edit</a>
@@ -113,6 +115,9 @@
 		  	</div>
 		  	<div class="form-group">
 			    <input type="text" class="form-control" id="icon" name="icon" placeholder="Submenu icon">
+		  	</div>
+		  	<div class="form-group">
+			    <input type="text" class="form-control" id="submenu_sequence" name="submenu_sequence" placeholder="Submenu Sequence">
 		  	</div>
 		  	<div class="form-group">
 		  		<div class="form-check">

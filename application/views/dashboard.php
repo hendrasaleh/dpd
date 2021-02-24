@@ -17,11 +17,6 @@
         </div>
       </div>
       <!-- /.container-fluid -->
-      <div class="row">
-        <div class="col-lg-8">
-          <?= $this->session->flashdata('message'); ?>
-        </div>
-      </div>
     </section>
 
     <!-- Main content -->
@@ -35,6 +30,3 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-
-

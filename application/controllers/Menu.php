@@ -63,6 +63,7 @@ class Menu extends CI_Controller
 				'menu_id' => $this->input->post('menu_id'),
 				'url' => $this->input->post('url'),
 				'icon' => $this->input->post('icon'),
+				'submenu_sequence' => $this->input->post('submenu_sequence'),
 				'is_active' => $this->input->post('is_active')
 			];
 			$this->db->insert('user_sub_menu', $data);
@@ -127,6 +128,7 @@ class Menu extends CI_Controller
 				'menu_id' => $this->input->post('menu_id'),
 				'url' => $this->input->post('url'),
 				'icon' => $this->input->post('icon'),
+				'submenu_sequence' => $this->input->post('submenu_sequence'),
 				'is_active' => $this->input->post('is_active')
 			];
 

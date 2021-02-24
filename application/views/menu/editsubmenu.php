@@ -57,7 +57,7 @@
 									</select>
 								</div>
 							</div>
-						  <div class="form-group row">
+						  	<div class="form-group row">
 								<label for="email" class="col-sm-2 col-form-label">Url</label>
 								<div class="col-sm-10">
 							    	<input type="text" class="form-control" id="url" name="url" placeholder="" value="<?= $subMenu['url']; ?>">
@@ -67,6 +67,12 @@
 								<label for="email" class="col-sm-2 col-form-label">Icon</label>
 								<div class="col-sm-10">
 							    	<input type="text" class="form-control" id="icon" name="icon" placeholder="" value="<?= $subMenu['icon']; ?>">
+							    </div>
+						  	</div>
+						  	<div class="form-group row">
+								<label for="email" class="col-sm-2 col-form-label">Sequence</label>
+								<div class="col-sm-10">
+							    	<input type="text" class="form-control" id="submenu_sequence" name="submenu_sequence" placeholder="" value="<?= $subMenu['submenu_sequence']; ?>">
 							    </div>
 						  	</div>
 						  	<div class="form-group">
