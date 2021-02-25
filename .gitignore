@@ -1,3 +1,6 @@
+# Lakukan command berikut ini setelah menambahkan file baru yang diignore
+# git rm -rf --cached .
+# git add .
 .DS_Store
 
 application/cache/*
