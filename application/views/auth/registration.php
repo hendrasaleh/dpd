@@ -54,7 +54,7 @@
       </form>
       <br />
       <p class="text-center">
-        <a href="<?= base_url('auth'); ?>" class="text-center">I already have a membership</a>
+        <a href="<?= base_url('auth'); ?>" class="text-center">Saya sudah mempunyai akun</a>
       </p>
     </div>
     <!-- /.form-box -->

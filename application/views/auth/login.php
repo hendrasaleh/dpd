@@ -5,12 +5,12 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Silakan Login ke Aplikasi</p>
       <?= $this->session->flashdata('message'); ?>
       <form action="<?= base_url('auth'); ?>" method="post">
         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" id="email" name="email"  placeholder="Enter phone number..." value="<?= set_value('email'); ?>">
+          <input type="text" class="form-control" id="email" name="email"  placeholder="Masukkan nomor Handphone.." value="<?= set_value('email'); ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <i class="fas fa-phone"></i>
@@ -42,7 +42,7 @@
       </p>-->
       <br />
       <p class="text-center">
-        <a href="<?= base_url('auth/registration'); ?>" class="text-center">Create Account!</a>
+        <a href="<?= base_url('auth/registration'); ?>" class="text-center">Registrasi</a>
       </p>
 
     </div>
