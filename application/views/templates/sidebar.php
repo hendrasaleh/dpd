@@ -58,7 +58,9 @@
             $querySubMenu = "SELECT *
                               FROM `user_sub_menu`
                              WHERE `menu_id` = $menuId
-                              AND `is_active` = 1";
+                              AND `is_active` = 1
+                              ORDER BY `submenu_sequence`"
+                              ;
             $subMenu = $this->db->query($querySubMenu)->result_array();
           
             foreach ($subMenu as $sm) :
