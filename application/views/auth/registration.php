@@ -10,6 +10,17 @@
       <p class="login-box-msg">Silakan isi form berikut untuk registrasi</p>
 
       <form action="<?= base_url('auth/registration'); ?>" method="post">
+        <div class="input-group mb-3">
+          <select class="form-control" name="prefix">
+            <option value="Mr">Tuan</option>
+            <option value="Ms">Nona</option>
+            <option value="Mrs">Nyonya</option>
+          </select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
         <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="name" name="name" placeholder="Nama lengkap" value="<?= set_value('name'); ?>" required>
@@ -50,6 +61,39 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <select class="form-control" name="prov" id="form_prov">
+            <option value="">Pilih Provinsi</option>
+            <?php foreach ($provinsi as $wil) : ?>
+              <option value="<?= $wil['id']; ?>"><?= $wil['name']; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-control" name="kab" id="form_kab"></select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-control" name="kec" id="form_kec"></select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-control" name="kel" id="form_des"></select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
         <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
           <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
@@ -82,3 +126,64 @@
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+      // sembunyikan form kabupaten, kecamatan dan desa
+      // $("#form_kab").hide();
+      // $("#form_kec").hide();
+      // $("#form_des").hide();
+
+      // ambil data kabupaten ketika data memilih provinsi
+      $('.form-control').on("change","#form_prov",function(){
+        var id = $(this).val();
+        var data = "id="+id+"&data=kabupaten";
+        $.ajax({
+          type: 'POST',
+          url: "<?= base_url('vendor/') . "get_daerah.php"; ?>",
+          data: data,
+          success: function(hasil) {
+            $("#form_kab").html(hasil);
+            $("#form_kab").show();
+            // $("#form_kec").hide();
+            // $("#form_des").hide();
+          }
+        });
+      });
+
+      // ambil data kecamatan/kota ketika data memilih kabupaten
+      $('.form-control').on("change","#form_kab",function(){
+        var id = $(this).val();
+        var data = "id="+id+"&data=kecamatan";
+        $.ajax({
+          type: 'POST',
+          url: "<?= base_url('vendor/') . "get_daerah.php"; ?>",
+          data: data,
+          success: function(hasil) {
+            $("#form_kec").html(hasil);
+            $("#form_kec").show();
+            // $("#form_des").hide();
+          }
+        });
+      });
+
+      // ambil data desa ketika data memilih kecamatan/kota
+      $('.form-control').on("change","#form_kec",function(){
+        var id = $(this).val();
+        var data = "id="+id+"&data=desa";
+        $.ajax({
+          type: 'POST',
+          url: "<?= base_url('vendor/') . "get_daerah.php"; ?>",
+          data: data,
+          success: function(hasil) {
+            $("#form_des").html(hasil);
+            $("#form_des").show();
+          }
+        });
+      });
+
+
+    });
+  </script>
+

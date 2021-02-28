@@ -7,6 +7,7 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->model('model_select');
 	}
 
 
@@ -72,6 +73,10 @@ class Auth extends CI_Controller
 		if ($this->session->userdata('email')) {
 			redirect('user');
 		}
+
+		$this->db->order_by('name');
+		$data['provinsi']=$this->model_select->provinsi();
+		$data['wilayah'] = $this->db->get('reg_provinces')->result_array();
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|is_unique[user.email]', [
@@ -187,6 +192,24 @@ class Auth extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account activation failed! Email invalid.</div>');
 			redirect('auth');
 		}
+	}
+
+	public function ambil_data()
+	{
+		$modul=$this->input->post('modul');
+		$id=$this->input->post('id');
+
+		if($modul=="kabupaten"){
+			echo $this->model_select->kabupaten($id);
+		}
+		else if($modul=="kecamatan"){
+			echo $this->model_select->kecamatan($id);
+
+		}
+		else if($modul=="kelurahan"){
+			echo $this->model_select->kelurahan($id);
+		}
+
 	}
 
 	public function logout()
