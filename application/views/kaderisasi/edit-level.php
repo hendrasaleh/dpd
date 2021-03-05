@@ -31,37 +31,26 @@
           		<?php endif; ?>
           		<div class="card">
 					<div class="card-header">
-					Kelola SPU
+					Kelola Level
 					</div>
 					<div class="card-body">
 						
-						<form action="<?= base_url('kaderisasi/tambahspu/'); ?>" method="post">
+						<form action="<?= base_url('kaderisasi/editlevel')."/".$level['id']; ?>" method="post">
 					      <div class="modal-body">
 						  	<div class="form-group row">
-								<label for="nama_spu" class="col-sm-4 col-form-label">Nama SPU</label>
+								<label for="kode_level" class="col-sm-4 col-form-label">Kode level</label>
 								<div class="col-sm-8">
-							    	<input type="text" class="form-control" id="nama_spu" name="nama_spu" placeholder="Misal: SPU 1" required>
+							    	<input type="text" class="form-control" id="kode_level" name="kode_level" value="<?= $level['kode_level']; ?>" required>
 							    </div>
 						  	</div>
 							<div class="form-group row">
-								<label for="ketua_spu" class="col-sm-4 col-form-label">Ketua SPU</label>
+								<label for="nama_level" class="col-sm-4 col-form-label">Ketua level</label>
 								<div class="col-sm-8">
-							    	<input type="text" class="form-control" id="ketua_spu" name="ketua_spu" placeholder="Misal: Ahmad" required>
+							    	<input type="text" class="form-control" id="nama_level" name="nama_level" value="<?= $level['nama_level']; ?>" required>
 							    </div>
 						  	</div>
-						  	<div class="form-group row">
-								<label for="kabupaten" class="col-sm-4 col-form-label">Kabupaten</label>
-								<div class="col-sm-8">
-									<select name="kabupaten" id="kabupaten" class="form-control select2">
-										<option value="">--Pilih Kabupaten--</option>
-										<?php foreach ($kabupaten AS $kab) : ?>
-											<option value="<?= $kab['id']; ?>"><?= $kab['name']; ?></option>
-										<?php endforeach; ?>
-									</select>
-								</div>
-							</div>
 					      </div>
-						<a href="<?= base_url('kaderisasi'); ?>" class="btn btn-secondary">Cancel</a>
+						<a href="<?= base_url('kaderisasi/level'); ?>" class="btn btn-secondary">Cancel</a>
 						<button type="submit" class="btn btn-primary">Save</button>
 						</form>
 						
