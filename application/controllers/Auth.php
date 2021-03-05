@@ -75,7 +75,6 @@ class Auth extends CI_Controller
 		}
 
 		$this->db->order_by('name');
-		// $data['provinsi']=$this->db->get(->Level_satu();
 		$data['wilayah'] = $this->db->get('reg_provinces')->result_array();
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
@@ -194,12 +193,6 @@ class Auth extends CI_Controller
 		}
 	}
 
-	function kendaraan()
-	{
-	    $data['hasil']=$this->model_select->Level_satu();
-		$this->load->view('v_kendaraan',$data);
-	}
-
 	function get_kab()
     {
         $id_provinsi=$this->input->post('id_provinsi');
@@ -220,24 +213,6 @@ class Auth extends CI_Controller
         $data=$this->model_select->Level_empat($id_kecamatan);
         echo json_encode($data);
     }
-
-	public function ambil_data()
-	{
-		$modul=$this->input->post('modul');
-		$id=$this->input->post('id');
-
-		if($modul=="kabupaten"){
-			echo $this->model_select->kabupaten($id);
-		}
-		else if($modul=="kecamatan"){
-			echo $this->model_select->kecamatan($id);
-
-		}
-		else if($modul=="kelurahan"){
-			echo $this->model_select->kelurahan($id);
-		}
-
-	}
 
 	public function logout()
 	{
