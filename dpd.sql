@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Mar 2021 pada 10.03
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.7
+-- Waktu pembuatan: 05 Mar 2021 pada 17.21
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 7.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -110,7 +111,26 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('49keftdodrpo8hqv5umvs3ap9cjg9ttj', '::1', 1614933597, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343933333539373b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
 ('2e96v15eg9k2o37fpjcgqv6mok07kcqf', '::1', 1614934357, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343933343335373b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
 ('n2pokjo16v7mg56i6ukklbmu0gu6f1rn', '::1', 1614934884, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343933343838343b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6d6573736167657c733a38393a223c64697620636c6173733d22616c65727420636f6c2d736d2d3620616c6572742d737563636573732220726f6c653d22616c657274223e204461746120626572686173696c206469706572626168617275692e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d),
-('ckgihnesnsfb6diifg5j1tn9ddvud4f7', '::1', 1614934904, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343933343838343b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6d6573736167657c733a38393a223c64697620636c6173733d22616c65727420636f6c2d736d2d3620616c6572742d737563636573732220726f6c653d22616c657274223e204461746120626572686173696c206469706572626168617275692e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d);
+('ckgihnesnsfb6diifg5j1tn9ddvud4f7', '::1', 1614934904, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343933343838343b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6d6573736167657c733a38393a223c64697620636c6173733d22616c65727420636f6c2d736d2d3620616c6572742d737563636573732220726f6c653d22616c657274223e204461746120626572686173696c206469706572626168617275692e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d),
+('ngnrm2n6bgrhj9itufh2qntii35dmj6t', '::1', 1614951419, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935313431393b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('fikhrgh2vv3afqulc01p3rbacrlklsv6', '::1', 1614951910, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935313931303b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('1q92v8ql946pp5vel3e9all2241s9ajs', '::1', 1614952894, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935323839343b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6d6573736167657c733a38373a223c64697620636c6173733d22616c65727420636f6c2d736d2d3620616c6572742d737563636573732220726f6c653d22616c657274223e2044617461206265726861736920646974616d6261686b616e2e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d),
+('f6oll7tqledv88b1c5uhnnldhh2ga3em', '::1', 1614953258, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935333235383b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('k6f9c6pk2o3utgd2m7r4ktddk6uud3f7', '::1', 1614953829, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935333832393b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6d6573736167657c733a38373a223c64697620636c6173733d22616c65727420636f6c2d736d2d3620616c6572742d737563636573732220726f6c653d22616c657274223e2044617461206265726861736920646974616d6261686b616e2e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d),
+('t4t4kogmnotd8ak82t54m60e6a429b07', '::1', 1614954146, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935343134363b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('f6ojhav482bio61pku68hql5jl5d8bvv', '::1', 1614954461, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935343436313b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('mgnfcfbmluficu3jjii3ea2mgp5otdd3', '::1', 1614954765, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935343736353b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('14tbfevnb0ag5dv41keogbflmf5lupai', '::1', 1614956995, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935363939353b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('3mavk5989n86t4ivmmrrteoreo1opbs7', '::1', 1614957738, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935373733383b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('btrrjkn5ma84j5hno8j74qrpkakbrs7r', '::1', 1614958060, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935383036303b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('2tpnu3aalqislepbv46eb1b795v6uho6', '::1', 1614958500, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935383530303b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('8fohjp1j95b5fucotofmkpugqdm3ddkl', '::1', 1614958886, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935383838363b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('4o67dq9eaaeehl13elalnbcsodu8eg6f', '::1', 1614959226, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343935393232363b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('tashqv5pockct462fr4n05lso8rdp5n8', '::1', 1614960040, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936303034303b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b6d6573736167657c733a38373a223c64697620636c6173733d22616c65727420636f6c2d736d2d3620616c6572742d737563636573732220726f6c653d22616c657274223e2044617461206265726861736920646974616d6261686b616e2e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d),
+('8rrjta9cpcvp0a0pmhjogjnis4gp5k70', '::1', 1614960350, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936303335303b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('lfh3j6s53bujjhh34p14pvigrg54tgml', '::1', 1614960676, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936303637363b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('05l6rlmkk9o1tpa8s9e0p80k3all8bsq', '::1', 1614961037, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936313033373b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('0dg3mbdq4fnv11gd5vmsnm71tsf6htii', '::1', 1614961168, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936313033373b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b);
 
 -- --------------------------------------------------------
 
@@ -123,6 +143,19 @@ CREATE TABLE `level` (
   `kode_level` varchar(255) NOT NULL,
   `nama_level` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `level`
+--
+
+INSERT INTO `level` (`id`, `kode_level`, `nama_level`) VALUES
+(1, 'A1', 'Anggota Pemula'),
+(2, 'A2', 'Anggota Siaga'),
+(3, 'A3', 'Anggota Muda'),
+(4, 'A4', 'Anggota Pratama'),
+(5, 'A5', 'Anggota Madya'),
+(6, 'A6', 'Anggota Dewasa'),
+(7, 'A7', 'Anggota Utama');
 
 -- --------------------------------------------------------
 
@@ -91498,7 +91531,13 @@ CREATE TABLE `spu` (
 --
 
 INSERT INTO `spu` (`id`, `nama_spu`, `ketua_spu`, `regency_id`) VALUES
-(1, 'Kepemudaan', 'Mu\'allim', '3208');
+(1, 'SPU 1', 'Muhammad Arifin', '3208'),
+(2, 'SPU 2', 'Fauzi Muhammad Ali', '3208'),
+(3, 'SPU 3', 'Dani Aprizal', '3208'),
+(4, 'SPU 4', 'Dede Siswandar', '3208'),
+(5, 'SPU 5', 'Prima Abadi', '3208'),
+(6, 'Pesantren', 'Mulyadin', '3208'),
+(7, 'Kepemudaan', 'Mu\'allim', '3208');
 
 -- --------------------------------------------------------
 
@@ -91507,13 +91546,104 @@ INSERT INTO `spu` (`id`, `nama_spu`, `ketua_spu`, `regency_id`) VALUES
 --
 
 CREATE TABLE `upa` (
-  `id` int(11) NOT NULL,
+  `upa_id` int(11) NOT NULL,
   `level_id` int(11) NOT NULL,
   `spu_id` int(11) NOT NULL,
   `nama_upa` varchar(255) NOT NULL,
   `nama_ketua` varchar(255) NOT NULL,
   `jenis_kelamin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `upa`
+--
+
+INSERT INTO `upa` (`upa_id`, `level_id`, `spu_id`, `nama_upa`, `nama_ketua`, `jenis_kelamin`) VALUES
+(1, 6, 1, 'Nama UPA Sementara', 'Abdul Rosyid', 1),
+(2, 6, 1, 'Nama UPA Sementara', 'Achidin Noor', 1),
+(3, 6, 1, 'Nama UPA Sementara', 'Agus Budiman', 1),
+(4, 6, 1, 'Nama UPA Sementara', 'Amam Badrutamam', 1),
+(5, 6, 1, 'Nama UPA Sementara', 'Asril Rusli', 1),
+(6, 6, 1, 'Nama UPA Sementara', 'Daswa', 1),
+(7, 6, 1, 'Nama UPA Sementara', 'Didik Wiranto', 1),
+(8, 6, 1, 'Nama UPA Sementara', 'Dwi Basyuni', 1),
+(9, 6, 1, 'Nama UPA Sementara', 'Elfa Robi', 1),
+(10, 6, 1, 'Nama UPA Sementara', 'Rijaludin', 1),
+(11, 6, 1, 'Nama UPA Sementara', 'Sugiarto', 1),
+(12, 5, 1, 'Nama UPA Sementara', 'Addin N', 1),
+(13, 5, 1, 'Nama UPA Sementara', 'Ade Kurniawan', 1),
+(14, 5, 1, 'Nama UPA Sementara', 'Afriadi', 1),
+(15, 5, 1, 'Nama UPA Sementara', 'Aria Pranata', 1),
+(16, 5, 1, 'Nama UPA Sementara', 'Arsyidi', 1),
+(17, 5, 1, 'Nama UPA Sementara', 'Basuki Ahmad Danuri', 1),
+(18, 5, 1, 'Nama UPA Sementara', 'Dani Afrizal', 1),
+(19, 5, 1, 'Nama UPA Sementara', 'Dedy Humaedy', 1),
+(20, 5, 1, 'Nama UPA Sementara', 'Dul Ahmad Bachtiar', 1),
+(21, 5, 1, 'Nama UPA Sementara', 'Effendi Ahmad', 1),
+(22, 5, 1, 'Nama UPA Sementara', 'Evnu', 1),
+(23, 5, 1, 'Nama UPA Sementara', 'Fauzi MA', 1),
+(24, 5, 1, 'Nama UPA Sementara', 'Ghozali', 1),
+(25, 5, 1, 'Nama UPA Sementara', 'Hendra Karunia Agustine', 1),
+(26, 5, 1, 'Nama UPA Sementara', 'Imam Nur Suharno', 1),
+(27, 5, 1, 'Nama UPA Sementara', 'Iwan Afwan', 1),
+(28, 5, 1, 'Nama UPA Sementara', 'Juheni', 1),
+(29, 5, 1, 'Nama UPA Sementara', 'M. Arifin ', 1),
+(30, 5, 1, 'Nama UPA Sementara', 'M. Riyadi', 1),
+(31, 5, 1, 'Nama UPA Sementara', 'M.S Abdullah ', 1),
+(32, 5, 1, 'Nama UPA Sementara', 'Mualim', 1),
+(33, 5, 1, 'Nama UPA Sementara', 'Mulyadin', 1),
+(34, 5, 1, 'Nama UPA Sementara', 'Mustofa ', 1),
+(35, 5, 1, 'Nama UPA Sementara', 'Prima Abadi', 1),
+(36, 5, 1, 'Nama UPA Sementara', 'Rosidin', 1),
+(37, 5, 1, 'Nama UPA Sementara', 'Rotim', 1),
+(38, 5, 1, 'Nama UPA Sementara', 'Saipuddin', 1),
+(39, 5, 1, 'Nama UPA Sementara', 'Sanwani', 1),
+(40, 5, 1, 'Nama UPA Sementara', 'Sunarno', 1),
+(41, 5, 1, 'Nama UPA Sementara', 'Supriyadi', 1),
+(42, 5, 1, 'Nama UPA Sementara', 'Suwarno', 1),
+(43, 5, 1, 'Nama UPA Sementara', 'Tata Sastera', 1),
+(44, 5, 1, 'Nama UPA Sementara', 'Tata Sugiarta ', 1),
+(45, 5, 1, 'Nama UPA Sementara', 'Toto Witarto ', 1),
+(46, 5, 1, 'Nama UPA Sementara', 'Ucup Supriatna', 1),
+(47, 6, 1, 'Nama UPA Sementara', 'Anita Setiyowati', 0),
+(48, 6, 1, 'Nama UPA Sementara', 'Apriani Zulfahmi', 0),
+(49, 6, 1, 'Nama UPA Sementara', 'Eros Rosita', 0),
+(50, 6, 1, 'Nama UPA Sementara', 'Mia Rusmia', 0),
+(51, 6, 1, 'Nama UPA Sementara', 'Rum Esti AR', 0),
+(52, 6, 1, 'Nama UPA Sementara', 'Sri Martini', 0),
+(53, 6, 1, 'Nama UPA Sementara', 'Wati Kuswati', 0),
+(54, 5, 1, 'Nama UPA Sementara', 'Ana Sakinah', 0),
+(55, 5, 1, 'Nama UPA Sementara', 'Arni Purlika', 0),
+(56, 5, 1, 'Nama UPA Sementara', 'Badiah H', 0),
+(57, 5, 1, 'Nama UPA Sementara', 'Darmayanti', 0),
+(58, 5, 1, 'Nama UPA Sementara', 'Dewi Handayani', 0),
+(59, 5, 1, 'Nama UPA Sementara', 'Dina Madinah', 0),
+(60, 5, 1, 'Nama UPA Sementara', 'Eni Raeni', 0),
+(61, 5, 1, 'Nama UPA Sementara', 'Enur Siti N', 0),
+(62, 5, 1, 'Nama UPA Sementara', 'Erna Sri Rahayu', 0),
+(63, 5, 1, 'Nama UPA Sementara', 'Eti Maryati', 0),
+(64, 5, 1, 'Nama UPA Sementara', 'Farida', 0),
+(65, 5, 1, 'Nama UPA Sementara', 'Fitri NM', 0),
+(66, 5, 1, 'Nama UPA Sementara', 'Hasanah', 0),
+(67, 5, 1, 'Nama UPA Sementara', 'Icih Mintarsih', 0),
+(68, 5, 1, 'Nama UPA Sementara', 'Marlianti', 0),
+(69, 5, 1, 'Nama UPA Sementara', 'Mimin M', 0),
+(70, 5, 1, 'Nama UPA Sementara', 'Mulyati', 0),
+(71, 5, 1, 'Nama UPA Sementara', 'Musthalahah', 0),
+(72, 5, 1, 'Nama UPA Sementara', 'Narni', 0),
+(73, 5, 1, 'Nama UPA Sementara', 'Nina Herlina', 0),
+(74, 5, 1, 'Nama UPA Sementara', 'Ningrum', 0),
+(75, 5, 1, 'Nama UPA Sementara', 'Nourma', 0),
+(76, 5, 1, 'Nama UPA Sementara', 'Pemi S', 0),
+(77, 5, 1, 'Nama UPA Sementara', 'Peni Rohan', 0),
+(78, 5, 1, 'Nama UPA Sementara', 'Renny', 0),
+(79, 5, 1, 'Nama UPA Sementara', 'Rina Ridiastuti', 0),
+(80, 5, 1, 'Nama UPA Sementara', 'Silmi Inaroh', 0),
+(81, 5, 1, 'Nama UPA Sementara', 'Sri Endah S', 0),
+(82, 5, 1, 'Nama UPA Sementara', 'Teti Suharti', 0),
+(83, 5, 1, 'Nama UPA Sementara', 'Wahyuni', 0),
+(84, 5, 1, 'Nama UPA Sementara', 'Wiwik T', 0),
+(85, 5, 1, 'Nama UPA Sementara', 'Yuyu M', 0);
 
 -- --------------------------------------------------------
 
@@ -91707,7 +91837,7 @@ ALTER TABLE `spu`
 -- Indeks untuk tabel `upa`
 --
 ALTER TABLE `upa`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`upa_id`);
 
 --
 -- Indeks untuk tabel `user`
@@ -91753,19 +91883,19 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT untuk tabel `level`
 --
 ALTER TABLE `level`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `spu`
 --
 ALTER TABLE `spu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `upa`
 --
 ALTER TABLE `upa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `upa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
