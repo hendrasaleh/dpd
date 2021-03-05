@@ -10,17 +10,6 @@
       <p class="login-box-msg">Silakan isi form berikut untuk registrasi</p>
 
       <form action="<?= base_url('auth/registration'); ?>" method="post">
-        <div class="input-group mb-3">
-          <select class="form-control" name="prefix">
-            <option value="Mr">Tuan</option>
-            <option value="Ms">Nona</option>
-            <option value="Mrs">Nyonya</option>
-          </select>
-          <div class="input-group-append">
-            <div class="input-group-text">
-            </div>
-          </div>
-        </div>
         <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="name" name="name" placeholder="Nama lengkap" value="<?= set_value('name'); ?>" required>
@@ -31,25 +20,14 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <div class="col-6">
-            <td>
-              <div class="icheck-primary d-inline">
-                <input type="radio" id="jenis_kelamin1" name="jenis_kelamin" value="1" required>
-                <label for="jenis_kelamin1">
-                  Laki-laki
-                </label>
-              </div>
-            </td>
-          </div>
-          <div class="col-6">
-            <td>
-              <div class="icheck-success d-inline">
-                <input type="radio" id="jenis_kelamin2" name="jenis_kelamin" value="0" required>
-                <label for="jenis_kelamin2">
-                  Perempuan
-                </label>
-              </div>
-            </td>
+          <select class="form-control" name="j_kelamin" id="j_kelamin">
+            <option value="">--Jenis Kelamin--</option>
+            <option value="1">Laki-laki</option>
+            <option value="0">Perempuan</option>
+          </select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
           </div>
         </div>
         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -62,9 +40,9 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="prov" id="form_prov">
-            <option value="">Pilih Provinsi</option>
-            <?php foreach ($provinsi as $wil) : ?>
+          <select class="form-control" name="provinsi" id="provinsi">
+            <option value="">--Pilih Provinsi--</option>
+            <?php foreach ($wilayah as $wil) : ?>
               <option value="<?= $wil['id']; ?>"><?= $wil['name']; ?></option>
             <?php endforeach; ?>
           </select>
@@ -74,21 +52,21 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="kab" id="form_kab"></select>
+          <select class="form-control" name="kabupaten" id="kabupaten"></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="kec" id="form_kec"></select>
+          <select class="form-control" name="kecamatan" id="kecamatan"></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="kel" id="form_des"></select>
+          <select class="form-control" name="desa" id="desa"></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
@@ -127,63 +105,78 @@
   </div><!-- /.card -->
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
+<script>
+    $("#provinsi").change(function(){
 
-      // sembunyikan form kabupaten, kecamatan dan desa
-      // $("#form_kab").hide();
-      // $("#form_kec").hide();
-      // $("#form_des").hide();
+        // variabel dari nilai combo box kendaraan
+        var id_provinsi = $("#provinsi").val();
 
-      // ambil data kabupaten ketika data memilih provinsi
-      $('.form-control').on("change","#form_prov",function(){
-        var id = $(this).val();
-        var data = "id="+id+"&data=kabupaten";
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
         $.ajax({
-          type: 'POST',
-          url: "<?= base_url('vendor/') . "get_daerah.php"; ?>",
-          data: data,
-          success: function(hasil) {
-            $("#form_kab").html(hasil);
-            $("#form_kab").show();
-            // $("#form_kec").hide();
-            // $("#form_des").hide();
-          }
+            url : "<?php echo base_url();?>/auth/get_kab",
+            method : "POST",
+            data : {id_provinsi:id_provinsi},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Kabupaten--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                }
+                $('#kabupaten').html(html);
+
+            }
         });
-      });
-
-      // ambil data kecamatan/kota ketika data memilih kabupaten
-      $('.form-control').on("change","#form_kab",function(){
-        var id = $(this).val();
-        var data = "id="+id+"&data=kecamatan";
-        $.ajax({
-          type: 'POST',
-          url: "<?= base_url('vendor/') . "get_daerah.php"; ?>",
-          data: data,
-          success: function(hasil) {
-            $("#form_kec").html(hasil);
-            $("#form_kec").show();
-            // $("#form_des").hide();
-          }
-        });
-      });
-
-      // ambil data desa ketika data memilih kecamatan/kota
-      $('.form-control').on("change","#form_kec",function(){
-        var id = $(this).val();
-        var data = "id="+id+"&data=desa";
-        $.ajax({
-          type: 'POST',
-          url: "<?= base_url('vendor/') . "get_daerah.php"; ?>",
-          data: data,
-          success: function(hasil) {
-            $("#form_des").html(hasil);
-            $("#form_des").show();
-          }
-        });
-      });
-
-
     });
-  </script>
 
+    $("#kabupaten").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var id_kabupaten = $("#kabupaten").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_kec",
+            method : "POST",
+            data : {id_kabupaten:id_kabupaten},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Kecamatan--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                }
+                $('#kecamatan').html(html);
+
+            }
+        });
+    });
+    $("#kecamatan").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var id_kecamatan = $("#kecamatan").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_desa",
+            method : "POST",
+            data : {id_kecamatan:id_kecamatan},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Desa--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                }
+                $('#desa').html(html);
+
+            }
+        });
+    });
+</script>
