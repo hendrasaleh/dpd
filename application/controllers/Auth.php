@@ -104,9 +104,9 @@ class Auth extends CI_Controller
 			$data = [
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($email),
-				'jenis_kelamin' => $this->input->post('j_kelamin'),
-				'nama_ketua' => $this->input->post('nama_ketua'),
-				'provice_id' => $this->input->post('provinsi'),
+				'gender' => $this->input->post('j_kelamin'),
+				'upa_id' => $this->input->post('nama_ketua'),
+				'province_id' => $this->input->post('provinsi'),
 				'regency_id' => $this->input->post('kabupaten'),
 				'district_id' => $this->input->post('kecamatan'),
 				'village_id' => $this->input->post('desa'),
@@ -116,6 +116,11 @@ class Auth extends CI_Controller
 				'role_id' => 3,
 				'is_active' => 1,
 				'date_created' => time(),
+				'date_modified' => time()
+			];
+
+			$data2 = [
+				'email' => htmlspecialchars($email),
 				'date_modified' => time()
 			];
 
@@ -132,6 +137,7 @@ class Auth extends CI_Controller
 
 			// $this->_sendEmail($token, 'verify');
 			$this->db->insert('user', $data);
+			$this->db->insert('user_detail', $data2);
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your account has been created. Please login.</div>');
 			redirect('auth');

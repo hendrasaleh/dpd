@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Mar 2021 pada 02.06
+-- Waktu pembuatan: 06 Mar 2021 pada 02.19
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.1.26
 
@@ -133,7 +133,9 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('0dg3mbdq4fnv11gd5vmsnm71tsf6htii', '::1', 1614989752, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343938393735323b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
 ('v7eagfc0o4jevdq92ufjdb4m2e02mgep', '::1', 1614990264, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939303236343b),
 ('fjprjpjtdd3u9lh30ks8h02ub47rqb3l', '::1', 1614992225, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939323232353b),
-('fh46tencbdteiblh71a5qj142fhvjq7c', '::1', 1614992256, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939323232353b);
+('fh46tencbdteiblh71a5qj142fhvjq7c', '::1', 1614993104, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939333130343b),
+('1efmkp7lqnv1emr880pvattd6j90m9mq', '::1', 1614993439, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939333433393b),
+('2rjt274uc500morvkfiavta1p1dhgqvv', '::1', 1614993541, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939333433393b6d6573736167657c733a3131333a223c64697620636c6173733d22616c65727420616c6572742d737563636573732220726f6c653d22616c657274223e20436f6e67726174756c6174696f6e2120596f7572206163636f756e7420686173206265656e20637265617465642e20506c65617365206c6f67696e2e3c2f6469763e223b5f5f63695f766172737c613a313a7b733a373a226d657373616765223b733a333a226f6c64223b7d);
 
 -- --------------------------------------------------------
 
@@ -91678,7 +91680,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `gender`, `upa_id`, `alamat`, `village_id`, `district_id`, `regency_id`, `province_id`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `date_modified`) VALUES
-(8, 'Hendra Karunia A., Lc., M.H.', 0, 0, '', '', '', '', '', 'hendrasaleh@gmail.com', 'Foto_Formal_(2).jpg', '$2y$10$XBnbQw2g779dEooZOYU1Bu61sWc8oc0jnurJfPlfua5Lf3K5RuFs6', 1, 1, 1607950063, 1609840824);
+(8, 'Hendra Karunia A., Lc., M.H.', 0, 0, '', '', '', '', '', 'hendrasaleh@gmail.com', 'Foto_Formal_(2).jpg', '$2y$10$XBnbQw2g779dEooZOYU1Bu61sWc8oc0jnurJfPlfua5Lf3K5RuFs6', 1, 1, 1607950063, 1609840824),
+(19, 'Dede Maryam', 0, 77, '3208162012', '3208162012', '320816', '3208', '32', '081291207732', 'default.jpg', '$2y$10$jfM1.a0PfWEIWw4t3rlYyObiIfLFtialkQVdBLVYUBtrBmKwDSfQK', 3, 1, 1614993541, 1614993541);
 
 -- --------------------------------------------------------
 
@@ -91718,19 +91721,19 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 
 CREATE TABLE `user_detail` (
   `email` varchar(128) NOT NULL,
-  `nickname` varchar(128) NOT NULL,
-  `tempat_lahir` varchar(15) NOT NULL,
-  `tgl_lahir` int(11) NOT NULL,
-  `hobi` varchar(255) NOT NULL,
-  `suku` varchar(128) NOT NULL,
-  `sifat_menonjol` text NOT NULL,
-  `visi` text NOT NULL,
-  `kendaraan` varchar(256) NOT NULL,
-  `pekerjaan` varchar(256) NOT NULL,
-  `tempat_kerja` varchar(256) NOT NULL,
-  `alamat_kerja` text NOT NULL,
-  `penghasilan` int(11) NOT NULL,
-  `date_modified` int(11) NOT NULL
+  `nickname` varchar(128) DEFAULT NULL,
+  `tempat_lahir` varchar(15) DEFAULT NULL,
+  `tgl_lahir` int(11) DEFAULT NULL,
+  `hobi` varchar(255) DEFAULT NULL,
+  `suku` varchar(128) DEFAULT NULL,
+  `sifat_menonjol` text,
+  `visi` text,
+  `kendaraan` varchar(256) DEFAULT NULL,
+  `pekerjaan` varchar(256) DEFAULT NULL,
+  `tempat_kerja` varchar(256) DEFAULT NULL,
+  `alamat_kerja` text,
+  `penghasilan` int(11) DEFAULT NULL,
+  `date_modified` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -91738,6 +91741,7 @@ CREATE TABLE `user_detail` (
 --
 
 INSERT INTO `user_detail` (`email`, `nickname`, `tempat_lahir`, `tgl_lahir`, `hobi`, `suku`, `sifat_menonjol`, `visi`, `kendaraan`, `pekerjaan`, `tempat_kerja`, `alamat_kerja`, `penghasilan`, `date_modified`) VALUES
+('081291207732', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1614993541),
 ('hendrasaleh@gmail.com', 'Hendra Karunia A., Lc., M.H.', '', 0, '', '', '', '', '', '', '', '', 0, 1609840824);
 
 -- --------------------------------------------------------
@@ -91947,7 +91951,7 @@ ALTER TABLE `upa`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
