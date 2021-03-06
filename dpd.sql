@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Mar 2021 pada 17.21
+-- Waktu pembuatan: 06 Mar 2021 pada 02.06
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.1.26
 
@@ -130,7 +130,10 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('8rrjta9cpcvp0a0pmhjogjnis4gp5k70', '::1', 1614960350, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936303335303b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
 ('lfh3j6s53bujjhh34p14pvigrg54tgml', '::1', 1614960676, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936303637363b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
 ('05l6rlmkk9o1tpa8s9e0p80k3all8bsq', '::1', 1614961037, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936313033373b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
-('0dg3mbdq4fnv11gd5vmsnm71tsf6htii', '::1', 1614961168, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343936313033373b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b);
+('0dg3mbdq4fnv11gd5vmsnm71tsf6htii', '::1', 1614989752, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343938393735323b656d61696c7c733a32313a2268656e64726173616c656840676d61696c2e636f6d223b726f6c655f69647c733a313a2231223b),
+('v7eagfc0o4jevdq92ufjdb4m2e02mgep', '::1', 1614990264, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939303236343b),
+('fjprjpjtdd3u9lh30ks8h02ub47rqb3l', '::1', 1614992225, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939323232353b),
+('fh46tencbdteiblh71a5qj142fhvjq7c', '::1', 1614992256, 0x5f5f63695f6c6173745f726567656e65726174657c693a313631343939323232353b);
 
 -- --------------------------------------------------------
 
@@ -91654,6 +91657,13 @@ INSERT INTO `upa` (`upa_id`, `level_id`, `spu_id`, `nama_upa`, `nama_ketua`, `je
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
+  `gender` int(2) NOT NULL,
+  `upa_id` int(11) NOT NULL,
+  `alamat` text NOT NULL,
+  `village_id` varchar(15) NOT NULL,
+  `district_id` varchar(15) NOT NULL,
+  `regency_id` varchar(15) NOT NULL,
+  `province_id` varchar(15) NOT NULL,
   `email` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
@@ -91667,8 +91677,8 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `date_modified`) VALUES
-(8, 'Hendra Karunia A., Lc., M.H.', 'hendrasaleh@gmail.com', 'Foto_Formal_(2).jpg', '$2y$10$XBnbQw2g779dEooZOYU1Bu61sWc8oc0jnurJfPlfua5Lf3K5RuFs6', 1, 1, 1607950063, 1609840824);
+INSERT INTO `user` (`id`, `name`, `gender`, `upa_id`, `alamat`, `village_id`, `district_id`, `regency_id`, `province_id`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `date_modified`) VALUES
+(8, 'Hendra Karunia A., Lc., M.H.', 0, 0, '', '', '', '', '', 'hendrasaleh@gmail.com', 'Foto_Formal_(2).jpg', '$2y$10$XBnbQw2g779dEooZOYU1Bu61sWc8oc0jnurJfPlfua5Lf3K5RuFs6', 1, 1, 1607950063, 1609840824);
 
 -- --------------------------------------------------------
 
@@ -91699,6 +91709,36 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (12, 4, 6),
 (13, 1, 7),
 (15, 1, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_detail`
+--
+
+CREATE TABLE `user_detail` (
+  `email` varchar(128) NOT NULL,
+  `nickname` varchar(128) NOT NULL,
+  `tempat_lahir` varchar(15) NOT NULL,
+  `tgl_lahir` int(11) NOT NULL,
+  `hobi` varchar(255) NOT NULL,
+  `suku` varchar(128) NOT NULL,
+  `sifat_menonjol` text NOT NULL,
+  `visi` text NOT NULL,
+  `kendaraan` varchar(256) NOT NULL,
+  `pekerjaan` varchar(256) NOT NULL,
+  `tempat_kerja` varchar(256) NOT NULL,
+  `alamat_kerja` text NOT NULL,
+  `penghasilan` int(11) NOT NULL,
+  `date_modified` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user_detail`
+--
+
+INSERT INTO `user_detail` (`email`, `nickname`, `tempat_lahir`, `tgl_lahir`, `hobi`, `suku`, `sifat_menonjol`, `visi`, `kendaraan`, `pekerjaan`, `tempat_kerja`, `alamat_kerja`, `penghasilan`, `date_modified`) VALUES
+('hendrasaleh@gmail.com', 'Hendra Karunia A., Lc., M.H.', '', 0, '', '', '', '', '', '', '', '', 0, 1609840824);
 
 -- --------------------------------------------------------
 
@@ -91850,6 +91890,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `user_detail`
+--
+ALTER TABLE `user_detail`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indeks untuk tabel `user_menu`

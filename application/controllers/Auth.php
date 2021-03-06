@@ -78,6 +78,13 @@ class Auth extends CI_Controller
 		$data['wilayah'] = $this->db->get('reg_provinces')->result_array();
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('j_kelamin', 'Jenis Kelamin', 'required|trim');
+		$this->form_validation->set_rules('nama_ketua', 'Ketua UPA', 'required|trim');
+		$this->form_validation->set_rules('provinsi', 'Provinsi', 'required|trim');
+		$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required|trim');
+		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+		$this->form_validation->set_rules('desa', 'Desa', 'required|trim');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|is_unique[user.email]', [
 			'is_unique' => "This account has already registered!"
 		]);
@@ -97,6 +104,13 @@ class Auth extends CI_Controller
 			$data = [
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($email),
+				'jenis_kelamin' => $this->input->post('j_kelamin'),
+				'nama_ketua' => $this->input->post('nama_ketua'),
+				'provice_id' => $this->input->post('provinsi'),
+				'regency_id' => $this->input->post('kabupaten'),
+				'district_id' => $this->input->post('kecamatan'),
+				'village_id' => $this->input->post('desa'),
+				'alamat' => $this->input->post('desa'),
 				'image' => 'default.jpg',
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 3,
@@ -211,6 +225,13 @@ class Auth extends CI_Controller
     {
         $id_kecamatan=$this->input->post('id_kecamatan');
         $data=$this->model_select->Level_empat($id_kecamatan);
+        echo json_encode($data);
+    }
+
+    function get_ketua()
+    {
+        $jenis_kelamin=$this->input->post('jenis_kelamin');
+        $data=$this->model_select->Pilih_ketua($jenis_kelamin);
         echo json_encode($data);
     }
 

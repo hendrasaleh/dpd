@@ -30,6 +30,13 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <select class="form-control" name="nama_ketua" id="nama_ketua"></select>
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="email" name="email" placeholder="No handphone (WA)" value="<?= set_value('email'); ?>" required>
@@ -69,6 +76,14 @@
           <select class="form-control" name="desa" id="desa"></select>
           <div class="input-group-append">
             <div class="input-group-text">
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Dusun/Komplek, RT dan RW" value="<?= set_value('alamat'); ?>" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
@@ -175,6 +190,30 @@
                     html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
                 }
                 $('#desa').html(html);
+
+            }
+        });
+    });
+    $("#j_kelamin").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var jenis_kelamin = $("#j_kelamin").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_ketua",
+            method : "POST",
+            data : {jenis_kelamin:jenis_kelamin},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Murobbi/ah--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].upa_id+'>'+data[i].nama_ketua+'</option>';
+                }
+                $('#nama_ketua').html(html);
 
             }
         });
