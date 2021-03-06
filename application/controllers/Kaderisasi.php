@@ -313,4 +313,93 @@ class Kaderisasi extends CI_Controller
 		redirect('kaderisasi/upa');
 	}
 
+	public function tampilSPU()
+	{
+		$data['title'] = 'Mutabaah Anggota';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->order_by('id');
+		$data['spu'] = $this->db->get('spu')->result_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('kaderisasi/tampil-spu', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function tampilUPA($id)
+	{
+		$data['title'] = 'Mutabaah Anggota';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('spu');
+		$this->db->join('upa', 'upa.spu_id = spu.id');
+		$this->db->join('level', 'level.id = upa.level_id');
+		$this->db->where('upa.spu_id', $id);
+		$this->db->order_by('upa.level_id, upa.nama_ketua');
+		$data['upa'] = $this->db->get()->result_array();
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('kaderisasi/tampil-upa', $data);
+			$this->load->view('templates/footer');
+	}
+
+	public function detailMutabaah($id)
+	{
+		$data['title'] = 'Mutabaah Anggota';
+
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->form_validation->set_rules('range', 'Periode', 'required|trim');
+
+		if( $this->form_validation->run() == false ) {
+			$awal = strtotime('first day of '.date('M').' '.date('Y'))-10;
+			$akhir = 86400+strtotime(date('Y-m-d'));
+			$data['bulan'] = "Bulan " . nama_bulan(date('Y-m-d'));
+			$data['awal'] = $awal;
+			$data['akhir'] = $akhir;
+		} else {
+			$input = str_replace(" ", "", $this->input->post('range'));
+			$array = explode("-", $input);
+			$awal = strtotime($array[0])-10;
+			$akhir = 86400+strtotime($array[1]);
+			$data['bulan'] = tanggal_indo(date('Y-m-d', strtotime($array[0]))) . " s.d. " . tanggal_indo(date('Y-m-d', strtotime($array[1])));
+			$data['awal'] = $awal;
+			$data['akhir'] = $akhir;
+		}
+
+		
+		// $data['mutabaah'] = $this->db->query("SELECT *, SUM(jumlah) AS 'total' FROM pondok_halaqoh JOIN pondok_murobbi ON pondok_murobbi.asrama_id = pondok_halaqoh.id JOIN cbt_user ON cbt_user.pondok_murobbi_id = pondok_murobbi.id JOIN pondok_mutabaah_ruhal ON pondok_mutabaah_ruhal.cbt_user_name = cbt_user.user_name WHERE pondok_murobbi.id = '$id' AND tanggal BETWEEN '$awal' AND '$akhir' GROUP BY cbt_user_name")->result_array();
+
+		$this->db->select('user.email, user.name');
+		$this->db->select_sum('jumlah');
+		$this->db->from('user');
+		$this->db->join('mutabaah', 'mutabaah.email = user.email');
+		$this->db->join('upa', 'upa.upa_id = mutabaah.upa_id');
+		$this->db->where('upa.upa_id', $id);
+		$this->db->where('mutabaah.tanggal >', $awal);
+		$this->db->where('mutabaah.tanggal <', $akhir);
+		$this->db->group_by('email');
+		$data['mutabaah'] = $this->db->get()->result_array();
+
+		// $this->db->select('*');
+		// $this->db->from('pondok_halaqoh');
+		// $this->db->join('pondok_murobbi', 'pondok_murobbi.asrama_id = pondok_halaqoh.id');
+		// $this->db->where('pondok_murobbi.id', $id);
+		// $data['kamar'] = $this->db->get()->row_array();
+
+		$data['upa'] = $this->db->get_where('upa', ['upa_id' => $id])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('kaderisasi/mutabaah', $data);
+		$this->load->view('templates/footer');
+
+	}
+
 }
