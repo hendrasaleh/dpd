@@ -110,7 +110,7 @@ class Auth extends CI_Controller
 				'regency_id' => $this->input->post('kabupaten'),
 				'district_id' => $this->input->post('kecamatan'),
 				'village_id' => $this->input->post('desa'),
-				'alamat' => $this->input->post('desa'),
+				'alamat' => $this->input->post('alamat'),
 				'image' => 'default.jpg',
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 3,
