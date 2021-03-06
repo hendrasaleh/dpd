@@ -47,9 +47,9 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= tanggal_indo(date('Y-m-d', $mtb['tanggal'])); ?></td>
-                  <td><?= number_format(($mtb['jumlah']/16)*100, 2).'%'; ?></td>
+                  <td><?= number_format(($mtb['jumlah']/1460)*100, 2).'%'; ?></td>
                   <td>
-                    <a href="<?= base_url('mutabaah/detail/') . $mtb['id']; ?>" class="badge badge-success">detail</a>
+                    <a href="<?= base_url('user/detailmutabaah/') . $mtb['mtb_id']; ?>" class="badge badge-success">detail</a>
                   </td>
                 </tr>
                 <?php 

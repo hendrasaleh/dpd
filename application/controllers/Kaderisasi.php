@@ -372,9 +372,6 @@ class Kaderisasi extends CI_Controller
 			$data['akhir'] = $akhir;
 		}
 
-		
-		// $data['mutabaah'] = $this->db->query("SELECT *, SUM(jumlah) AS 'total' FROM pondok_halaqoh JOIN pondok_murobbi ON pondok_murobbi.asrama_id = pondok_halaqoh.id JOIN cbt_user ON cbt_user.pondok_murobbi_id = pondok_murobbi.id JOIN pondok_mutabaah_ruhal ON pondok_mutabaah_ruhal.cbt_user_name = cbt_user.user_name WHERE pondok_murobbi.id = '$id' AND tanggal BETWEEN '$awal' AND '$akhir' GROUP BY cbt_user_name")->result_array();
-
 		$this->db->select('user.email, user.name');
 		$this->db->select_sum('jumlah');
 		$this->db->from('user');
@@ -385,12 +382,6 @@ class Kaderisasi extends CI_Controller
 		$this->db->where('mutabaah.tanggal <', $akhir);
 		$this->db->group_by('email');
 		$data['mutabaah'] = $this->db->get()->result_array();
-
-		// $this->db->select('*');
-		// $this->db->from('pondok_halaqoh');
-		// $this->db->join('pondok_murobbi', 'pondok_murobbi.asrama_id = pondok_halaqoh.id');
-		// $this->db->where('pondok_murobbi.id', $id);
-		// $data['kamar'] = $this->db->get()->row_array();
 
 		$data['upa'] = $this->db->get_where('upa', ['upa_id' => $id])->row_array();
 

@@ -29,7 +29,7 @@
             <b>Lihat periode lain:</b>
           </div>
           <div class="box-body">
-              <form method="post" action="<?= base_url('rekapitulasi/detailmutabaah/') . $upa['upa_id']; ?>">
+              <form method="post" action="<?= base_url('kaderisasi/detailmutabaah/') . $upa['upa_id']; ?>">
                 <div class="row">
                     <div class="col-sm-4">
                       <div class="form-group">
@@ -65,7 +65,7 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $mtb['name']; ?></td>
-                  <td><?= number_format(($mtb['jumlah']/(4*141)*100), 2).'%'; ?></td>
+                  <td><?= number_format(($mtb['jumlah']/(4*1460)*100), 2).'%'; ?></td>
                   <td>
                     <form action="<?= base_url('rekapitulasi/mutabaahsantri'); ?>" method="post">
                       <input type="hidden" name="id_santri" value="<?= $mtb['email']; ?>">
