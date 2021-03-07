@@ -56,6 +56,7 @@
 				</div>
 				<div class="form-group row justify-content-end">
 					<div class="col-sm-10">
+						<a class="btn btn-warning" href="<?= base_url('user'); ?>">Kembali</a>&nbsp;
 						<button type="submit" class="btn btn-primary">Edit</button>
 					</div>
 				</div>

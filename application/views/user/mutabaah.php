@@ -61,6 +61,9 @@
           </div>
         </div>
       </div>
+      <div class="card-footer">
+          <a class="btn btn-warning" href="<?= base_url('user'); ?>">Kembali</a>
+        </div>
     </section>
     <!-- /.content -->
   </div>

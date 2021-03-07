@@ -42,6 +42,7 @@
 						<?= form_error('new_password2', '<small class="text-danger pl-3">', '</small>'); ?>
 					</div>
 					<div class="form-group">
+            <a class="btn btn-warning" href="<?= base_url('user'); ?>">Kembali</a>&nbsp;
 						<button type="submit" class="btn btn-primary">Change Password</button>
 					</div>
 				</form>

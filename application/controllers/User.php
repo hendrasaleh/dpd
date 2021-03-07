@@ -13,7 +13,8 @@ class User extends CI_Controller
 	{
 		$data['title'] = 'User Dashboard';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['menu'] = $this->db->get_where('user_sub_menu', ['menu_id' => 2])->result_array();
+		$this->db->order_by('submenu_sequence');
+		$data['menu'] = $this->db->get_where('user_sub_menu', ['menu_id' => 2, 'submenu_sequence >' => 1])->result_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
