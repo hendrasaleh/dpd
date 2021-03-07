@@ -139,7 +139,7 @@ class Auth extends CI_Controller
 			$this->db->insert('user', $data);
 			$this->db->insert('user_detail', $data2);
 
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your account has been created. Please login.</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Akun berhasil didaftarkan! Silakan login menggunakan nomor HP dan Password.</div>');
 			redirect('auth');
 		}
 	}
