@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="j_kelamin" id="j_kelamin">
+          <select class="form-control" name="j_kelamin" id="j_kelamin" required>
             <option value="">--Jenis Kelamin--</option>
             <option value="1">Laki-laki</option>
             <option value="0">Perempuan</option>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="nama_ketua" id="nama_ketua"></select>
+          <select class="form-control" name="nama_ketua" id="nama_ketua" required></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="provinsi" id="provinsi">
+          <select class="form-control" name="provinsi" id="provinsi" required>
             <option value="">--Pilih Provinsi--</option>
             <?php foreach ($wilayah as $wil) : ?>
               <option value="<?= $wil['id']; ?>"><?= $wil['name']; ?></option>
@@ -59,21 +59,21 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="kabupaten" id="kabupaten"></select>
+          <select class="form-control" name="kabupaten" id="kabupaten" required></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="kecamatan" id="kecamatan"></select>
+          <select class="form-control" name="kecamatan" id="kecamatan" required></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <select class="form-control" name="desa" id="desa"></select>
+          <select class="form-control" name="desa" id="desa" required></select>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>

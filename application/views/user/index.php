@@ -28,7 +28,24 @@
     <section class="content">
       <div class="card">
         <div class="card-body">
-          Start creating your amazing application!
+          <div class="row">
+            <?php foreach ($menu as $m) : ?>
+            <div class="col-sm-3">
+              <a href="<?= base_url() . $m['url']; ?>">
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h4><?= $m['title']; ?></h4>
+                    <p>User Menu</p>
+                  </div>
+                  <div class="icon">
+                    <i class="<?= $m['icon']; ?>"></i>
+                  </div>
+                  <span class="small-box-footer">Lihat</span>
+                </div>
+              </a>
+            </div>
+            <?php endforeach; ?>
+          </div>
         </div>
       </div>
     </section>

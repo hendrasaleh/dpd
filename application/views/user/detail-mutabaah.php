@@ -40,6 +40,7 @@
                         <tr>
                           <th>#</th>
                           <th>Jenis Kegiatan</th>
+                          <th>Target</th>
                           <th>Pelaksanaan / Pekan</th>
                         </tr>
                       </thead>
@@ -47,6 +48,7 @@
                         <tr>
                           <td>1</td>
                           <td>Tanggal pelaksanaan UPA</td>
+                          <td>Tanggal UPA</td>
                           <td>
                             <?= tanggal_indo(date('Y-m-d', $mutabaah['tgl_upa'])); ?>
                           </td>
@@ -54,11 +56,13 @@
                         <tr>
                           <td>2</td>
                           <td>Kehadiran UPA</td>
+                          <td>Hadir</td>
                           <td><?= $mutabaah['liqo'] == 0 ? 'Tidak Hadir' : 'Hadir'; ?></td>
                         </tr>
                         <tr>
                           <td>3</td>
                           <td>Shalat berjamaah / tepat waktu bagi akhwat</td>
+                          <td>35 kali</td>
                           <td>
                             <?php
                               switch ($mutabaah['berjamaah']) {
@@ -81,21 +85,25 @@
                         <tr>
                           <td>4</td>
                           <td>Tilawah Al Qur'an 1 Juz / hari</td>
-                          <td><?= $mutabaah['tilawah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['tilawah'] . ' kali'; ?></td>
+                          <td>7 Juz</td>
+                          <td><?= $mutabaah['tilawah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['tilawah'] . ' Juz'; ?></td>
                         </tr>
                         <tr>
                           <td>5</td>
                           <td>Dzikir pagi Al Ma'tsuraat</td>
+                          <td>7 kali</td>
                           <td><?= $mutabaah['dzikir_pagi'] == 0 ? 'Tidak melaksanakan' : $mutabaah['dzikir_pagi'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>6</td>
                           <td>Dzikir petang Al Ma'tsuraat</td>
+                          <td>7 kali</td>
                           <td><?= $mutabaah['dzikir_petang'] == 0 ? 'Tidak melaksanakan' : $mutabaah['dzikir_petang'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>7</td>
                           <td>Dzikir Tasbih, Tahmid, Takbir, Tahlil 100x / hari</td>
+                          <td>700 kali</td>
                           <td><?= $mutabaah['dzikir_lain'] == 0 ? 'Tidak melaksanakan' : $mutabaah['dzikir_lain'] . ' kali'; ?></td>
                         </tr>
                       </tbody>
@@ -116,36 +124,43 @@
                         <tr>
                           <td>8</td>
                           <td>Membaca sholawat 100x / hari</td>
+                          <td>700 kali</td>
                           <td><?= $mutabaah['shalawat'] == 0 ? 'Tidak melaksanakan' : $mutabaah['shalawat'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>9</td>
                           <td>Qiyamullail</td>
+                          <td>7 kali</td>
                           <td><?= $mutabaah['qiyamullail'] == 0 ? 'Tidak melaksanakan' : $mutabaah['qiyamullail'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>10</td>
                           <td>Shalat Dhuha</td>
+                          <td>7 kali</td>
                           <td><?= $mutabaah['dhuha'] == 0 ? 'Tidak melaksanakan' : $mutabaah['dhuha'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>11</td>
                           <td>Membantu/melaksanakan pekerjaan rumah</td>
+                          <td>7 kali</td>
                           <td><?= $mutabaah['bantu_prt'] == 0 ? 'Tidak melaksanakan' : $mutabaah['bantu_prt'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>12</td>
                           <td>Infaq/sedekah</td>
+                          <td>Ya</td>
                           <td><?= $mutabaah['infaq'] == 0 ? 'Tidak' : 'Ya'; ?></td>
                         </tr>
                         <tr>
                           <td>13</td>
                           <td>Shaum sunnah</td>
+                          <td>2 kali</td>
                           <td><?= $mutabaah['shaum_sunnah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['shaum_sunnah'] . ' kali'; ?></td>
                         </tr>
                         <tr>
                           <td>14</td>
                           <td>Olah raga</td>
+                          <td>4 kali</td>
                           <td><?= $mutabaah['olah_raga'] == 0 ? 'Tidak melaksanakan' : $mutabaah['olah_raga'] . ' kali'; ?></td>
                         </tr>
                       </tbody>

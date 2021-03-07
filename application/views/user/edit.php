@@ -26,20 +26,20 @@
 			<div class="col-lg-8">
 			<?= form_open_multipart('user/edit');?>
 				<div class="form-group row">
-					<label for="email" class="col-sm-2 col-form-label">Email</label>
+					<label for="email" class="col-sm-2 col-form-label">No. Hanphone</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="name" class="col-sm-2 col-form-label">Full Name</label>
+					<label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
 						<?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-sm-2">Picture</div>
+					<div class="col-sm-2">Foto</div>
 					<div class="col-sm-10">
 						<div class="row">
 							<div class="col-sm-3">

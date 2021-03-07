@@ -13,6 +13,7 @@ class User extends CI_Controller
 	{
 		$data['title'] = 'User Dashboard';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['menu'] = $this->db->get_where('user_sub_menu', ['menu_id' => 2])->result_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
@@ -24,7 +25,13 @@ class User extends CI_Controller
 	public function profile()
 	{
 		$data['title'] = 'My Profile';
+
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
+		$data['prov'] = $this->db->get_where('reg_provinces', ['id' => $data['user']['province_id']])->row_array();
+		$data['kab'] = $this->db->get_where('reg_regencies', ['id' => $data['user']['regency_id']])->row_array();
+		$data['kec'] = $this->db->get_where('reg_districts', ['id' => $data['user']['district_id']])->row_array();
+		$data['desa'] = $this->db->get_where('reg_villages', ['id' => $data['user']['village_id']])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
@@ -37,6 +44,7 @@ class User extends CI_Controller
 	{
 		$data['title'] = 'Edit Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->form_validation->set_rules('name', 'Full Name', 'required|trim');
 
