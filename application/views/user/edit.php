@@ -93,6 +93,8 @@
 								<input type="text" class="form-control" id="alamat" name="alamat" value="<?= $user['alamat']; ?>">
 							</div>
 						</div>
+					</div>
+					<div class="col-lg-6">
 						<div class="form-group row">
 							<label for="suku" class="col-sm-4 col-form-label">Suku</label>
 							<div class="col-sm-8">
@@ -114,8 +116,6 @@
 								<?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-6">
 						<div class="form-group row">
 							<label for="visi" class="col-sm-4 col-form-label">Visi hidup</label>
 							<div class="col-sm-8">

@@ -78,7 +78,7 @@ class User extends CI_Controller
 			$hobi = strtoupper($this->input->post('hobi'));
 			$suku = strtoupper($this->input->post('suku'));
 			$sifat_menonjol = strtoupper($this->input->post('sifat_menonjol'));
-			$visi = strtoupper($this->input->post('visi'));
+			$visi = $this->input->post('visi');
 			$kendaraan = strtoupper($this->input->post('kendaraan'));
 			$pekerjaan = strtoupper($this->input->post('pekerjaan'));
 			$tempat_kerja = $this->input->post('tempat_kerja');
