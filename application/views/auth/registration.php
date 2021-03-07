@@ -89,7 +89,7 @@
         </div>
         <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+          <input type="password" class="form-control" id="password1" name="password1" placeholder="Masukkan password baru">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
