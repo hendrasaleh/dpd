@@ -167,6 +167,7 @@
               </div>
             </div>
           </div>
+          <small class="text-muted">Terakhir diperbaharui : <?= date('d F Y H:i', $user['date_modified']) . ' WIB'; ?></small>
           <!-- /.card -->
         </div>
         <div class="card-footer">

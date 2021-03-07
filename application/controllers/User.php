@@ -46,6 +46,12 @@ class User extends CI_Controller
 		$data['title'] = 'Edit Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
+		$data['wilayah'] = $this->db->get('reg_provinces')->result_array();
+
+		$data['prov'] = $this->db->get_where('reg_provinces', ['id' => $data['user']['province_id']])->row_array();
+		$data['kab'] = $this->db->get_where('reg_regencies', ['id' => $data['user']['regency_id']])->row_array();
+		$data['kec'] = $this->db->get_where('reg_districts', ['id' => $data['user']['district_id']])->row_array();
+		$data['desa'] = $this->db->get_where('reg_villages', ['id' => $data['user']['village_id']])->row_array();
 
 		$this->form_validation->set_rules('name', 'Full Name', 'required|trim');
 
@@ -56,8 +62,28 @@ class User extends CI_Controller
 			$this->load->view('user/edit', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$name = $this->input->post('name');
 			$email = $this->input->post('email');
+			$name = $this->input->post('name');
+			$gender = $this->input->post('gender');
+			$alamat = $this->input->post('alamat');
+			$village_id = $this->input->post('desa');
+			$district_id = $this->input->post('kecamatan');
+			$regency_id = $this->input->post('kabupaten');
+			$province_id = $this->input->post('provinsi');
+			$date_modified = time();
+			// data2
+			$nickname = $this->input->post('nickname');
+			$tempat_lahir = strtoupper($this->input->post('tempat_lahir'));
+			$tgl_lahir = strtotime($this->input->post('tgl_lahir'));
+			$hobi = strtoupper($this->input->post('hobi'));
+			$suku = strtoupper($this->input->post('suku'));
+			$sifat_menonjol = strtoupper($this->input->post('sifat_menonjol'));
+			$visi = strtoupper($this->input->post('visi'));
+			$kendaraan = strtoupper($this->input->post('kendaraan'));
+			$pekerjaan = strtoupper($this->input->post('pekerjaan'));
+			$tempat_kerja = $this->input->post('tempat_kerja');
+			$alamat_kerja = $this->input->post('alamat_kerja');
+			$penghasilan = $this->input->post('penghasilan');
 
 			// cek jika ada gambar (file) yang akan diupload
 			$upload_image = $_FILES['image']['name'];
@@ -78,19 +104,49 @@ class User extends CI_Controller
 					}
 
 					$new_image = $this->upload->data('file_name');
-					$this->db->set('image', $new_image);
 				} else {
-					echo $this->upload->display_errors();
+					$new_image = $data['user']['image'];
 				}
-			}
+			} else {
+					$new_image = $data['user']['image'];
+				}
 
-			$this->db->set('date_modified', time());
-			$this->db->set('name', $name);
+			$data = [
+				'name' => $name,
+				'gender' => $gender,
+				'alamat' => $alamat,
+				'village_id' => $village_id,
+				'district_id' => $district_id,
+				'regency_id' => $regency_id,
+				'province_id' => $province_id,
+				'date_modified' => $date_modified,
+				'image' => $new_image
+			];
+
+			$data2 = [
+				'nickname' => $nickname,
+				'tempat_lahir' => $tempat_lahir,
+				'tgl_lahir' => $tgl_lahir,
+				'hobi' => $hobi,
+				'suku' => $suku,
+				'sifat_menonjol' => $sifat_menonjol,
+				'visi' => $visi,
+				'kendaraan' => $kendaraan,
+				'pekerjaan' => $pekerjaan,
+				'tempat_kerja' => $tempat_kerja,
+				'alamat_kerja' => $alamat_kerja,
+				'penghasilan' => $penghasilan,
+				'date_modified' => $date_modified
+			];
+
 			$this->db->where('email', $email);
-			$this->db->update('user');
+			$this->db->update('user',$data);
 
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Your profile has been updated!</div>');
-			redirect('user');
+			$this->db->where('email', $email);
+			$this->db->update('user_detail',$data2);
+
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Profil berhasil diperbaharui!</div>');
+			redirect('user/profile');
 		}
 	}
 
