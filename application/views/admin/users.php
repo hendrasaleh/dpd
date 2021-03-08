@@ -50,7 +50,7 @@
 				      <td><?= $user['name']; ?></td>
 				      <td><?= $user['role']; ?></td>
 				      <td><?= $user['is_active'] == 1 ? 'Yes' : 'No'; ?></td>
-				      <td><?= date('d-M-Y', $user['date_modified']);?></td>
+				      <td><?= date('d-M-Y H:m:s', $user['date_modified']);?></td>
 				      <td>
 				      		<a href="manageuser/<?= $user['id']; ?>" class="badge badge-success">edit</a>
 				      		<a href="javascript:hapusData(<?= $user['id']; ?>)" class="badge badge-danger">delete</a>
