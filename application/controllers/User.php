@@ -106,7 +106,7 @@ class User extends CI_Controller
 					$new_image = $this->upload->data('file_name');
 				} else {
 					$new_image = $data['user']['image'];
-					$info_image = " Namun gambar gagal diperbaharui. Ukuran file terlalu besar.";
+					$info_image = " Namun gambar gagal diperbaharui. Ukuran file terlalu besar atau file rusak.";
 				}
 			} else {
 					$new_image = $data['user']['image'];
