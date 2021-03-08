@@ -85,9 +85,8 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
 		$this->form_validation->set_rules('desa', 'Desa', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|is_unique[user.email]', [
-			'is_unique' => "This account has already registered!"
-		]);
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|callback_is_number|is_unique[user.email]', [
+			'is_unique' => "Nomor ini sudah terdaftar!"]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[5]|matches[password2]', [
 			'matches' => 'Password dont match!',
 			'min_length' => 'Password too short!'
@@ -210,6 +209,15 @@ class Auth extends CI_Controller
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account activation failed! Email invalid.</div>');
 			redirect('auth');
+		}
+	}
+
+	public function is_number()
+	{
+		$user = $this->input->post('email');
+		if (!is_numeric($user)) {
+			$this->form_validation->set_message('is_number', 'Nomor handphone salah.');
+                    return FALSE;
 		}
 	}
 
