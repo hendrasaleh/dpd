@@ -35,25 +35,25 @@
 					</div>
 					<div class="card-body">
 						
-						<form action="<?= base_url('admin/manageuser'); ?>/<?= $user['id'] ?>" method="post">
+						<form action="<?= base_url('admin/manageuser'); ?>/<?= $users['id'] ?>" method="post">
 					      <div class="modal-body">
 					        <div class="form-group row">
 								<label for="email" class="col-sm-4 col-form-label">Email</label>
 								<div class="col-sm-8">
-							    	<input type="text" class="form-control" id="email" name="email" placeholder="" value="<?= $user['email']; ?>" readonly>
+							    	<input type="text" class="form-control" id="email" name="email" placeholder="" value="<?= $users['email']; ?>" readonly>
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
 								<label for="email" class="col-sm-4 col-form-label">Name</label>
 								<div class="col-sm-8">
-							    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<?= $user['name']; ?>">
+							    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<?= $users['name']; ?>">
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
 								<label for="email" class="col-sm-4 col-form-label">Role</label>
 								<div class="col-sm-8">
 									<select name="role_id" id="role_id" class="form-control">
-										<option value="<?= $user['role_id']; ?>"><?= $user['role']; ?></option>
+										<option value="<?= $users['role_id']; ?>"><?= $users['role']; ?></option>
 										<?php foreach ($role as $r) : ?>
 											<option value="<?= $r['id']; ?>"><?= $r['role']; ?></option>
 										<?php endforeach; ?>
