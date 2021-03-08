@@ -11,7 +11,7 @@ class User extends CI_Controller
 	
 	public function index()
 	{
-		$data['title'] = 'User Dashboard';
+		$data['title'] = 'Tampilan Utama';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->db->order_by('submenu_sequence');
 		$data['menu'] = $this->db->get_where('user_sub_menu', ['menu_id' => 2, 'submenu_sequence >' => 1])->result_array();
@@ -25,7 +25,7 @@ class User extends CI_Controller
 
 	public function profile()
 	{
-		$data['title'] = 'My Profile';
+		$data['title'] = 'Profil Saya';
 
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
@@ -43,7 +43,7 @@ class User extends CI_Controller
 
 	public function edit()
 	{
-		$data['title'] = 'Edit Profile';
+		$data['title'] = 'Ubah Profil';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
 		$data['wilayah'] = $this->db->get('reg_provinces')->result_array();
@@ -177,7 +177,7 @@ class User extends CI_Controller
 
     public function changePassword()
 	{
-		$data['title'] = 'Change Password';
+		$data['title'] = 'Ubah Kata Sandi';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
@@ -194,11 +194,11 @@ class User extends CI_Controller
 			$current_password = $this->input->post('current_password');
 			$new_password = $this->input->post('new_password1');
 			if (!password_verify($current_password, $data['user']['password'])) {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Wrong current password!</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Kata sandi lama salah!</div>');
 				redirect('user/changepassword');
 			} else {
 				if ($current_password == $new_password) {
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> New password cannot be the same as current password!</div>');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Kata sandi baru tidak boleh sama dengan sebelumnya!</div>');
 					redirect('user/changepassword');
 				} else {
 					// password sudah ok
@@ -211,7 +211,7 @@ class User extends CI_Controller
 					$this->session->unset_userdata('email');
 					$this->session->unset_userdata('role_id');
 
-					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Password changed! Please login with new password.</div>');
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Kata sandi berhasil diubah! Silakan login dengan kata sandi baru.</div>');
 					redirect('auth');
 				}
 			}
@@ -220,7 +220,7 @@ class User extends CI_Controller
 
 	public function mutabaah()
 	{
-		$data['title'] = 'Data Mutabaah';
+		$data['title'] = 'Data Evaluasi';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->db->select('*');
@@ -241,7 +241,7 @@ class User extends CI_Controller
 
 	public function inputMutabaah()
 	{
-		$data['title'] = 'Data Mutabaah';
+		$data['title'] = 'Data Evaluasi';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->form_validation->set_rules('tgl_upa', 'Tanggal pelaksanaan UPA', 'required|trim');
@@ -300,7 +300,7 @@ class User extends CI_Controller
 
 	public function detailmutabaah($id)
 	{
-		$data['title'] = 'Data Mutabaah';
+		$data['title'] = 'Data Evaluasi';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->db->select('*');
