@@ -89,7 +89,7 @@
         </div>
         <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" id="password1" name="password1" placeholder="Masukkan password baru">
+          <input type="password" class="form-control" id="password1" name="password1" placeholder="Masukkan kata sandi baru">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat password">
+          <input type="password" class="form-control" id="password2" name="password2" placeholder="Ulangi kata sandi">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -106,7 +106,7 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
           </div>
           <!-- /.col -->
         </div>
@@ -207,7 +207,7 @@
             async : false,
             dataType : 'json',
             success: function(data){
-                var html = "<option value=''>--Pilih Murobbi/ah--</option>";
+                var html = "<option value=''>--Pilih Ketua (Pembimbing) UPA--</option>";
                 var i;
 
                 for(i=0; i<data.length; i++){

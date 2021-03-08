@@ -19,7 +19,7 @@
         </div>
         <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Kata Sandi">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -28,7 +28,7 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
           </div>
           <div class="col-8">
           </div>

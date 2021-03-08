@@ -55,7 +55,7 @@ class Auth extends CI_Controller
 						redirect('user');
 					}
 				} else {
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Wrong password!</div>');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password salah!</div>');
 			redirect('auth');
 				}
 			} else {
@@ -63,7 +63,7 @@ class Auth extends CI_Controller
 			redirect('auth');
 			}
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Account is not registered!</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Akun belum terdaftar!</div>');
 			redirect('auth');
 		}
 	}
@@ -247,7 +247,7 @@ class Auth extends CI_Controller
 		$this->session->unset_userdata('role_id');
 
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah keluar dari aplikasi!</div>');
 			redirect('auth');
 	}
 
