@@ -85,7 +85,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
 		$this->form_validation->set_rules('desa', 'Desa', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|callback_is_number|is_unique[user.email]', [
+		$this->form_validation->set_rules('email', 'No Handphone', 'required|trim|callback_is_number|is_unique[user.email]', [
 			'is_unique' => "Nomor ini sudah terdaftar!"]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[5]|matches[password2]', [
 			'matches' => 'Password dont match!',
