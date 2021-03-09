@@ -218,6 +218,8 @@ class Auth extends CI_Controller
 		if (!is_numeric($user)) {
 			$this->form_validation->set_message('is_number', 'Nomor handphone salah.');
                     return FALSE;
+		} else {
+			return TRUE;
 		}
 	}
 
