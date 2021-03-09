@@ -136,13 +136,15 @@ class Admin extends CI_Controller
 	public function manageuser($id)
 	{
 		$data['title'] = 'Manage User';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
 		$data['role'] = $this->db->get('user_role')->result_array();
 		$this->db->select('*');
 		$this->db->from('user');
 		$this->db->join('user_role', 'user_role.id = user.role_id');
 		$this->db->where('user.id', $id);
 		$this->db->order_by('user_role.id', 'ASC');
-		$data['user'] = $this->db->get()->row_array();
+		$data['users'] = $this->db->get()->row_array();
 		
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
