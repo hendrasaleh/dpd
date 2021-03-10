@@ -26,8 +26,8 @@
           <div class="box-header">
             <?= $this->session->flashdata('message'); ?>
             <h5><?= $anggota['name']; ?></h5>
-            <p class="mb-0"><b>Murobbi : <?= $anggota['nama_ketua']; ?></b></p>
-            <a class="btn btn-info mt-3 mb-3" href="<?= base_url('user/inputmutabaah/'); ?>">Input Mutabaah</a>
+            <p class="mb-0"><b>Pembimbing : <?= $anggota['nama_ketua']; ?></b></p>
+            <a class="btn btn-info mt-3 mb-3" href="<?= base_url('user/inputmutabaah/'); ?>">Input Data</a>
           </div>
           <div class="box-body">
             <table class="table table-striped table-hover table-responsive">
