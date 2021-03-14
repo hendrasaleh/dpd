@@ -327,4 +327,12 @@ class User extends CI_Controller
 
 	}
 
+	public function hapusMutabaah($id)
+	{
+		
+		$this->db->delete('mutabaah', ['mtb_id' => $id]);
+		$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-danger" role="alert"> Data berhasil dihapus!</div>');
+		redirect('user/mutabaah');
+	}
+
 }

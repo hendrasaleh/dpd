@@ -37,7 +37,8 @@
                   <th>Tanggal Input</th>
                   <th>Capaian</th>
                   <th>Ketarangan</th>
-                  <th>Lihat Detail</th>
+                  <th>Lihat</th>
+                  <th>Hapus</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,6 +53,9 @@
                   <td><?= $mtb['haid_nifas'] == 1 ? 'Sedang berhalangan (haid/nifas)' : '-'; ?></td>
                   <td>
                     <a href="<?= base_url('user/detailmutabaah/') . $mtb['mtb_id']; ?>" class="badge badge-success">detail</a>
+                  </td>
+                  <td>
+                    <a href="javascript:hapusData(<?= $mtb['mtb_id']; ?>)" class="badge badge-danger">hapus</a>
                   </td>
                 </tr>
                 <?php 
@@ -74,7 +78,7 @@
 <script language="JavaScript" type="text/javascript">
   function hapusData(id){
     if (confirm("Apakah anda yakin akan menghapus data ini?")){
-        window.location.href = 'hapustamu/' + id;
+        window.location.href = 'hapusmutabaah/' + id;
     }
   }
 </script>
