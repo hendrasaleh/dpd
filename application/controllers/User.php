@@ -272,6 +272,7 @@ class User extends CI_Controller
 
 			$dzikir_lain = $this->input->post('dzikir_lain')*100;
 			$shalawat = $this->input->post('shalawat')*100;
+			$tilawah = $this->input->post('tilawah')*10;
 			if (is_null($this->input->post('haid_nifas'))) {
 				$haid_nifas = 0;
 			} else {
@@ -285,7 +286,7 @@ class User extends CI_Controller
 						'liqo' => $this->input->post('liqo'),
 						'qiyamullail' => $this->input->post('qiyamullail'),
 						'dhuha' => $this->input->post('dhuha'),
-						'tilawah' => $this->input->post('tilawah')*10,
+						'tilawah' => $tilawah,
 						'bantu_prt' => $this->input->post('bantu_prt'),
 						'dzikir_pagi' => $this->input->post('dzikir_pagi'),
 						'infaq' => $this->input->post('infaq'),
@@ -296,7 +297,7 @@ class User extends CI_Controller
 						'berjamaah' => $this->input->post('berjamaah'),
 						'shalawat' => $shalawat,
 						'haid_nifas' => $haid_nifas,
-						'jumlah' => $this->input->post('liqo')+$this->input->post('qiyamullail')+$this->input->post('dhuha')+$this->input->post('tilawah')+$this->input->post('bantu_prt')+$this->input->post('dzikir_pagi')+$this->input->post('infaq')+$this->input->post('shaum_sunnah')+$this->input->post('dzikir_petang')+$this->input->post('olah_raga')+$dzikir_lain+$this->input->post('berjamaah')+$shalawat
+						'jumlah' => $this->input->post('liqo')+$this->input->post('qiyamullail')+$this->input->post('dhuha')+$tilawah+$this->input->post('bantu_prt')+$this->input->post('dzikir_pagi')+$this->input->post('infaq')+$this->input->post('shaum_sunnah')+$this->input->post('dzikir_petang')+$this->input->post('olah_raga')+$dzikir_lain+$this->input->post('berjamaah')+$shalawat
 			];
 
 			$this->db->insert('mutabaah', $data);

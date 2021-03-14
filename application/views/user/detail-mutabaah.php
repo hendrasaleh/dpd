@@ -85,8 +85,18 @@
                         <tr>
                           <td>4</td>
                           <td>Tilawah Al Qur'an 1 Juz / hari</td>
-                          <td>7 Juz</td>
-                          <td><?= $mutabaah['tilawah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['tilawah'] . ' Juz/halaman'; ?></td>
+                          <td>140 halaman</td>
+                          <td>
+                            <?php 
+                              if ($mutabaah['tilawah'] == 0) {
+                                echo "Tidak melaksanakan";
+                              } elseif ($mutabaah['tilawah'] == 140) {
+                                echo $mutabaah['tilawah'] . " atau lebih";
+                              } else {
+                                echo $mutabaah['tilawah'] . " halaman";
+                              }
+                             ?>
+                          </td>
                         </tr>
                         <tr>
                           <td>5</td>
@@ -117,6 +127,7 @@
                         <tr>
                           <th>#</th>
                           <th>Jenis Kegiatan</th>
+                          <th>Target</th>
                           <th>Pelaksanaan / Pekan</th>
                         </tr>
                       </thead>
@@ -155,13 +166,33 @@
                           <td>13</td>
                           <td>Shaum sunnah</td>
                           <td>2 kali</td>
-                          <td><?= $mutabaah['shaum_sunnah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['shaum_sunnah'] . ' kali'; ?></td>
+                          <td>
+                            <?php 
+                              if ($mutabaah['shaum_sunnah'] == 0) {
+                                echo "Tidak melaksanakan";
+                              } elseif ($mutabaah['shaum_sunnah'] == 2) {
+                                echo $mutabaah['shaum_sunnah'] . " kali atau lebih";
+                              } else {
+                                echo $mutabaah['shaum_sunnah'] . " kali";
+                              }
+                             ?>
+                          </td>
                         </tr>
                         <tr>
                           <td>14</td>
                           <td>Olah raga</td>
                           <td>4 kali</td>
-                          <td><?= $mutabaah['olah_raga'] == 0 ? 'Tidak melaksanakan' : $mutabaah['olah_raga'] . ' kali'; ?></td>
+                          <td>
+                            <?php 
+                              if ($mutabaah['olah_raga'] == 0) {
+                                echo "Tidak melaksanakan";
+                              } elseif ($mutabaah['olah_raga'] == 4) {
+                                echo $mutabaah['olah_raga'] . " kali atau lebih";
+                              } else {
+                                echo $mutabaah['olah_raga'] . " kali";
+                              }
+                            ?>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
