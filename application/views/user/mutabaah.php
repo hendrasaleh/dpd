@@ -36,6 +36,7 @@
                   <th>#</th>
                   <th>Tanggal Input</th>
                   <th>Capaian</th>
+                  <th>Ketarangan</th>
                   <th>Lihat Detail</th>
                 </tr>
               </thead>
@@ -48,6 +49,7 @@
                   <th scope="row"><?= $i; ?></th>
                   <td><?= tanggal_indo(date('Y-m-d', $mtb['tanggal'])); ?></td>
                   <td><?= number_format(($mtb['jumlah']/1460)*100, 2).'%'; ?></td>
+                  <td><?= $mtb['haid_nifas'] == 1 ? 'Sedang berhalangan (haid/nifas)' : '-'; ?></td>
                   <td>
                     <a href="<?= base_url('user/detailmutabaah/') . $mtb['mtb_id']; ?>" class="badge badge-success">detail</a>
                   </td>

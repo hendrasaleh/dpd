@@ -86,7 +86,7 @@
                           <td>4</td>
                           <td>Tilawah Al Qur'an 1 Juz / hari</td>
                           <td>7 Juz</td>
-                          <td><?= $mutabaah['tilawah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['tilawah'] . ' Juz'; ?></td>
+                          <td><?= $mutabaah['tilawah'] == 0 ? 'Tidak melaksanakan' : $mutabaah['tilawah'] . ' Juz/halaman'; ?></td>
                         </tr>
                         <tr>
                           <td>5</td>
@@ -168,8 +168,11 @@
                   </div>
                 </div>
               </div>
+              <?php if ($mutabaah['haid_nifas'] == 1) : ?>
+                <i>Pekan ini sedang berhalangan (haid/nifas)</i>
+              <?php endif; ?>
             </div>
-            <div class="box-footer">
+            <div class="box-footer mt-2">
               <a class="btn btn-warning" href="<?= base_url('user/mutabaah'); ?>">Back</a>
             </div>
           </div>

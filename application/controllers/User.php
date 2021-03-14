@@ -92,6 +92,7 @@ class User extends CI_Controller
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '2048';
 				$config['upload_path']   = './assets/img/profile/';
+				$config['file_name'] = $data['user']['id'];
 
 				$this->load->library('upload', $config);
 
@@ -271,6 +272,11 @@ class User extends CI_Controller
 
 			$dzikir_lain = $this->input->post('dzikir_lain')*100;
 			$shalawat = $this->input->post('shalawat')*100;
+			if (is_null($this->input->post('haid_nifas'))) {
+				$haid_nifas = 0;
+			} else {
+				$haid_nifas = $this->input->post('haid_nifas');
+			}
 			$data = [
 						'tanggal' => time(),
 						'email' => $this->input->post('email'),
@@ -279,7 +285,7 @@ class User extends CI_Controller
 						'liqo' => $this->input->post('liqo'),
 						'qiyamullail' => $this->input->post('qiyamullail'),
 						'dhuha' => $this->input->post('dhuha'),
-						'tilawah' => $this->input->post('tilawah'),
+						'tilawah' => $this->input->post('tilawah')*10,
 						'bantu_prt' => $this->input->post('bantu_prt'),
 						'dzikir_pagi' => $this->input->post('dzikir_pagi'),
 						'infaq' => $this->input->post('infaq'),
@@ -289,6 +295,7 @@ class User extends CI_Controller
 						'dzikir_lain' => $dzikir_lain,
 						'berjamaah' => $this->input->post('berjamaah'),
 						'shalawat' => $shalawat,
+						'haid_nifas' => $haid_nifas,
 						'jumlah' => $this->input->post('liqo')+$this->input->post('qiyamullail')+$this->input->post('dhuha')+$this->input->post('tilawah')+$this->input->post('bantu_prt')+$this->input->post('dzikir_pagi')+$this->input->post('infaq')+$this->input->post('shaum_sunnah')+$this->input->post('dzikir_petang')+$this->input->post('olah_raga')+$dzikir_lain+$this->input->post('berjamaah')+$shalawat
 			];
 

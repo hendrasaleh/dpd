@@ -86,13 +86,14 @@
                           <tr>
                             <td>4</td>
                             <td>Tilawah Al Qur'an 1 Juz / hari</td>
-                            <td>7 Juz</td>
+                            <td>140 halaman</td>
                             <td>
                               <select name="tilawah" id="tilawah" class="form-control" required>
-                                <option value="0">Kurang dari 1 Juz</option>
-                                <?php for ($i = 1; $i <= 7; $i++) : ?>
-                                <option value="<?= $i; ?>"><?= $i . ' Juz'; ?></option>
+                                <option value="0">Kurang dari 10 halaman</option>
+                                <?php for ($i = 1; $i <= 13; $i++) : ?>
+                                <option value="<?= $i; ?>"><?= $i . '0 halaman'; ?></option>
                                 <?php endfor; ?>
+                                <option value="14">140 halaman atau lebih</option>
                               </select>
                             </td>
                           </tr>
@@ -245,6 +246,16 @@
                     </div>
                   </div>
                 </div>
+                <?php if ($user['gender'] == 0) : ?>
+                <div class="form-group clearfix">
+                  <div class="icheck-primary d-inline">
+                    <input class="icheck-primary d-inline" type="checkbox" value="1" name="haid_nifas" id="checkboxPrimary1">
+                    <label class="form-check-label" for="checkboxPrimary1">
+                      <strong>Sedang haidh / nifas</strong>
+                    </label>
+                  </div>
+                </div>
+                <?php endif; ?>
               </div>
               <div class="box-footer">
                 <input type="hidden" name="email" value="<?= $user['email']; ?>">
