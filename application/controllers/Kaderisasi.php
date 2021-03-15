@@ -393,4 +393,37 @@ class Kaderisasi extends CI_Controller
 
 	}
 
+	public function dataPerAnggota()
+	{
+		$data['title'] = 'Mutabaah Anggota';
+
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('email');
+		$awal = $this->input->post('awal');
+		$akhir = $this->input->post('akhir');
+		$data['bulan'] = $this->input->post('bulan');
+
+		// $this->db->select('*');
+		// $this->db->from('pondok_asrama');
+		// $this->db->join('pondok_kamar', 'pondok_kamar.asrama_id = pondok_asrama.id');
+		// $this->db->join('cbt_user', 'cbt_user.pondok_kamar_id = pondok_kamar.id');
+		// $this->db->join('cbt_user_grup', 'cbt_user.user_grup_id = cbt_user_grup.grup_id');
+		// $this->db->where('cbt_user.user_name', $id);
+		$data['anggota'] = $this->db->get_where('user', ['email' => $id])->row_array();
+		$data['awal'] = $awal;
+		$data['akhir'] = $akhir;
+
+		$data['mutabaah'] = $this->db->query("SELECT nama_asrama, no_kamar, grup_nama, user_firstname, SUM(qiyamullail) AS 'qiyamullail', SUM(subuh_berjamaah) AS 'subuh_berjamaah', SUM(baca_matsurat_1) AS 'baca_matsurat_1', SUM(bantu_ortu) AS 'bantu_ortu', SUM(shalat_dhuha) AS 'shalat_dhuha',SUM(belajar_daring) AS 'belajar_daring', SUM(dzuhur_berjamaah) AS 'dzuhur_berjamaah', SUM(qoilulah) AS 'qoilulah', SUM(liqo) AS 'liqo', SUM(ashar_berjamaah) AS 'ashar_berjamaah', SUM(baca_matsurat_2) AS 'baca_matsurat_2', SUM(maghrib_berjamaah) AS 'maghrib_berjamaah', SUM(tilawah_murojaah) AS 'tilawah_murojaah', SUM(isya_berjamaah) AS 'isya_berjamaah', SUM(baca_buku) AS 'baca_buku', SUM(tidur_jam_10) AS 'tidur_jam_10', SUM(jumlah) AS 'jumlah' FROM pondok_asrama JOIN pondok_kamar ON pondok_kamar.asrama_id = pondok_asrama.id JOIN cbt_user ON cbt_user.pondok_kamar_id = pondok_kamar.id JOIN cbt_user_grup ON cbt_user_grup.grup_id = cbt_user.user_grup_id JOIN pondok_mutabaah ON pondok_mutabaah.cbt_user_name = cbt_user.user_name WHERE cbt_user.user_name = '$id' AND tanggal BETWEEN '$awal' AND '$akhir' GROUP BY cbt_user_name")->row_array();
+
+		
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('santri/mutabaah-santri', $data);
+		$this->load->view('templates/footer');
+
+	}
+
 }
