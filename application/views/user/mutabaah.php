@@ -34,7 +34,8 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Tanggal Input</th>
+                  <th>Tanggal UPA</th>
+                  <th>Tanggal Input Data</th>
                   <th>Capaian</th>
                   <th>Ketarangan</th>
                   <th>Lihat</th>
@@ -48,6 +49,7 @@
                 ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>
+                  <td><?= tanggal_indo(date('Y-m-d', $mtb['tgl_upa'])); ?></td>
                   <td><?= tanggal_indo(date('Y-m-d', $mtb['tanggal'])); ?></td>
                   <td><?= number_format(($mtb['jumlah']/1593)*100, 2).'%'; ?></td>
                   <td><?= $mtb['haid_nifas'] == 1 ? 'Sedang berhalangan (haid/nifas)' : '-'; ?></td>
