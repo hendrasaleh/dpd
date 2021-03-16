@@ -27,7 +27,7 @@
 
 		  		<?= $this->session->flashdata('message'); ?>
 
-		  		<table class="table table-hover">
+		  		<table id="userdata" class="table table-hover">
 				  <thead>
 				    <tr>
 				      <th scope="col">#</th>
@@ -70,7 +70,23 @@
   </div>
   <!-- /.content-wrapper -->
 
-
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#userdata').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
 <script language="JavaScript" type="text/javascript">
 	function hapusData(id){

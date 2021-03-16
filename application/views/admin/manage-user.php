@@ -40,7 +40,7 @@
 					        <div class="form-group row">
 								<label for="email" class="col-sm-4 col-form-label">Email</label>
 								<div class="col-sm-8">
-							    	<input type="text" class="form-control" id="email" name="email" placeholder="" value="<?= $users['email']; ?>" readonly>
+							    	<input type="text" class="form-control" id="email" name="email" placeholder="" value="<?= $users['email']; ?>">
 							    </div>
 						  	</div>
 						  	<div class="form-group row">
@@ -58,6 +58,12 @@
 											<option value="<?= $r['id']; ?>"><?= $r['role']; ?></option>
 										<?php endforeach; ?>
 									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="new_password" class="col-sm-4 col-form-label">Kata sandi baru</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="new_password" name="new_password" value="<?= $users['password']; ?>">
 								</div>
 							</div>
 							<div class="form-group">

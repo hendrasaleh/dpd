@@ -11,6 +11,25 @@ class Kaderisasi extends CI_Controller
 
 	public function index()
 	{
+		$data['title'] = 'Dashboard Kaderisasi';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		// $data['kecamatan'] = $this->db->query("SELECT `reg_districts`.`name` AS 'kecamatan', COUNT(`reg_districts`.`name`) AS 'jml_kec' FROM `user` JOIN `reg_districts` ON `user`.`district_id` = `reg_districts`.`id` GROUP BY `district_id`")->result_array();
+		// $data['spu'] = $this->db->query("SELECT `spu`.`nama_spu` AS 'nama_spu', COUNT(`upa`.`spu_id`) AS 'jml_spu' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `spu` ON `upa`.`spu_id` = `spu`.`id` GROUP BY `upa`.`spu_id`")->result_array();
+		// $data['akhwat'] = $this->db->query("SELECT `level`.`nama_level` AS 'nama_level', COUNT(`level`.`id`) AS 'jml_level' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `level` ON `upa`.`level_id` = `level`.`id` WHERE `user`.`gender` = 0 GROUP BY `level`.`id`")->result_array();
+		// $data['ikhwan'] = $this->db->query("SELECT `level`.`nama_level` AS 'nama_level', COUNT(`level`.`id`) AS 'jml_level' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `level` ON `upa`.`level_id` = `level`.`id` WHERE `user`.`gender` = 1 GROUP BY `level`.`id`")->result_array();		
+
+		// $this->load->view('templates/header', $data);
+		// $this->load->view('templates/topbar', $data);
+		// $this->load->view('templates/sidebar', $data);
+		// $this->load->view('kaderisasi/index', $data);
+		// $this->load->view('templates/footer');
+
+		$this->load->view('kaderisasi/index', $data);
+	}
+
+	public function dataSPU()
+	{
 		$data['title'] = 'Data SPU';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -23,7 +42,7 @@ class Kaderisasi extends CI_Controller
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('kaderisasi/index', $data);
+		$this->load->view('kaderisasi/data-spu', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -424,6 +443,12 @@ class Kaderisasi extends CI_Controller
 		$this->load->view('santri/mutabaah-santri', $data);
 		$this->load->view('templates/footer');
 
+	}
+
+	public function get_jeniskelamin()
+	{
+		$jk = $this->db->query("SELECT `user`.`gender` AS 'jenis_kelamin', COUNT(`user`.`gender`) AS 'jml_jk' FROM `user` GROUP BY `gender` ORDER BY `gender` DESC")->result_array();
+		return json_encode($jk);
 	}
 
 }
