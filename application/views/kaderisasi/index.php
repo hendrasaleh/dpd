@@ -1001,7 +1001,18 @@
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieData        = donutData;
+    var pieData        = {
+      labels: [
+          'Ikhwan', 
+          'Akhwat',
+      ],
+      datasets: [
+        {
+          data: [149,252],
+          backgroundColor : ['#f56954', '#00a65a'],
+        }
+      ]
+    }
     var pieOptions     = {
       maintainAspectRatio : false,
       responsive : true,

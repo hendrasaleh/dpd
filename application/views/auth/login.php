@@ -44,6 +44,9 @@
       <p class="text-center">
         <a href="<?= base_url('auth/registration'); ?>" class="text-center">Registrasi</a>
       </p>
+      <p class="text-center">
+        <a href="https://wa.me/6285261017724?text=Saya lupa password. Tolong dipulihkan akun atas nama ">Klik jika lupa kata sandi</a>
+      </p>
 
     </div>
     <!-- /.login-card-body -->
