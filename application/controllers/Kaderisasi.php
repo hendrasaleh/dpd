@@ -367,7 +367,7 @@ class Kaderisasi extends CI_Controller
 			$this->load->view('templates/footer');
 	}
 
-	public function detailMutabaah($id)
+	public function tampilAnggota($id)
 	{
 		$data['title'] = 'Mutabaah Anggota';
 
@@ -391,7 +391,7 @@ class Kaderisasi extends CI_Controller
 			$data['akhir'] = $akhir;
 		}
 
-		$this->db->select('user.email, user.name');
+		$this->db->select('user.id, user.email, user.name');
 		$this->db->select_sum('jumlah');
 		$this->db->from('user');
 		$this->db->join('mutabaah', 'mutabaah.email = user.email');
@@ -407,42 +407,122 @@ class Kaderisasi extends CI_Controller
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
+		$this->load->view('kaderisasi/tampil-anggota', $data);
+		$this->load->view('templates/footer');
+
+	}
+
+	public function mutabaah($id)
+	{
+		$data['title'] = 'Mutabaah Anggota';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('upa');
+		$this->db->join('user', 'user.upa_id = upa.upa_id');
+		$this->db->where('user.id', $id);
+		$data['anggota'] = $this->db->get()->row_array();
+
+		$data['mutabaah'] = $this->db->get_where('mutabaah', ['email' => $data['anggota']['email']])->result_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
 		$this->load->view('kaderisasi/mutabaah', $data);
 		$this->load->view('templates/footer');
 
 	}
 
-	public function dataPerAnggota()
+	public function detailmutabaah($id)
 	{
-		$data['title'] = 'Mutabaah Anggota';
-
+		$data['title'] = 'Data Evaluasi';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$id = $this->input->post('email');
-		$awal = $this->input->post('awal');
-		$akhir = $this->input->post('akhir');
-		$data['bulan'] = $this->input->post('bulan');
+		$data['mutabaah'] = $this->db->get_where('mutabaah', ['mtb_id' => $id])->row_array();
 
-		// $this->db->select('*');
-		// $this->db->from('pondok_asrama');
-		// $this->db->join('pondok_kamar', 'pondok_kamar.asrama_id = pondok_asrama.id');
-		// $this->db->join('cbt_user', 'cbt_user.pondok_kamar_id = pondok_kamar.id');
-		// $this->db->join('cbt_user_grup', 'cbt_user.user_grup_id = cbt_user_grup.grup_id');
-		// $this->db->where('cbt_user.user_name', $id);
-		$data['anggota'] = $this->db->get_where('user', ['email' => $id])->row_array();
-		$data['awal'] = $awal;
-		$data['akhir'] = $akhir;
-
-		$data['mutabaah'] = $this->db->query("SELECT nama_asrama, no_kamar, grup_nama, user_firstname, SUM(qiyamullail) AS 'qiyamullail', SUM(subuh_berjamaah) AS 'subuh_berjamaah', SUM(baca_matsurat_1) AS 'baca_matsurat_1', SUM(bantu_ortu) AS 'bantu_ortu', SUM(shalat_dhuha) AS 'shalat_dhuha',SUM(belajar_daring) AS 'belajar_daring', SUM(dzuhur_berjamaah) AS 'dzuhur_berjamaah', SUM(qoilulah) AS 'qoilulah', SUM(liqo) AS 'liqo', SUM(ashar_berjamaah) AS 'ashar_berjamaah', SUM(baca_matsurat_2) AS 'baca_matsurat_2', SUM(maghrib_berjamaah) AS 'maghrib_berjamaah', SUM(tilawah_murojaah) AS 'tilawah_murojaah', SUM(isya_berjamaah) AS 'isya_berjamaah', SUM(baca_buku) AS 'baca_buku', SUM(tidur_jam_10) AS 'tidur_jam_10', SUM(jumlah) AS 'jumlah' FROM pondok_asrama JOIN pondok_kamar ON pondok_kamar.asrama_id = pondok_asrama.id JOIN cbt_user ON cbt_user.pondok_kamar_id = pondok_kamar.id JOIN cbt_user_grup ON cbt_user_grup.grup_id = cbt_user.user_grup_id JOIN pondok_mutabaah ON pondok_mutabaah.cbt_user_name = cbt_user.user_name WHERE cbt_user.user_name = '$id' AND tanggal BETWEEN '$awal' AND '$akhir' GROUP BY cbt_user_name")->row_array();
-
-		
+		$this->db->select('*');
+		$this->db->from('upa');
+		$this->db->join('user', 'user.upa_id = upa.upa_id');
+		$this->db->where('user.email', $data['mutabaah']['email']);
+		$data['anggota'] = $this->db->get()->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
-		$this->load->view('santri/mutabaah-santri', $data);
+		$this->load->view('kaderisasi/detail-mutabaah', $data);
 		$this->load->view('templates/footer');
 
+	}
+
+	public function users()
+	{
+		$data['title'] = 'Kelola Anggota';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('user_role');
+		$this->db->join('user', 'user_role.id = user.role_id');
+		$this->db->order_by('user_role.id', 'ASC');
+		$this->db->order_by('user.name', 'ASC');
+		$data['users'] = $this->db->get()->result_array();
+		
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('admin/users', $data);
+		$this->load->view('templates/footer');
+		
+	}
+
+	public function manageuser($id)
+	{
+		$data['title'] = 'Kelola Anggota';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$data['role'] = $this->db->get('user_role')->result_array();
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('user_role', 'user_role.id = user.role_id');
+		$this->db->where('user.id', $id);
+		$this->db->order_by('user_role.id', 'ASC');
+		$data['users'] = $this->db->get()->row_array();
+		
+
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('role_id', 'Role', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('admin/manage-user', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$email = $this->input->post('email');
+			$new_password = $this->input->post('new_password');
+			$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+			$data = [
+				'name' => htmlspecialchars($this->input->post('name', true)),
+				'role_id' => $this->input->post('role_id'),
+				'password' => $password_hash,
+				'is_active' => $this->input->post('is_active'),
+				'date_modified' => time()
+			];
+
+			$this->db->where('email', $email);
+			$this->db->update('user', $data);
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> User edited!</div>');
+			redirect('admin/users');
+		}
+
+	}
+
+	public function deleteuser($id)
+	{
+		
+		$this->db->delete('user', ['id' => $id]);
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> User deleted!</div>');
+		redirect('admin/users');
 	}
 
 	public function get_jeniskelamin()

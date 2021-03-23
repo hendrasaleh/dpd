@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="box-body">
-            <table class="table table-striped table-hover table-responsive">
+            <table id="userdata" class="table table-striped table-hover">
               <thead>
                 <tr>
                   <th>#</th>
@@ -99,6 +99,24 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#userdata').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
 <script language="JavaScript" type="text/javascript">
   function hapusData(id){

@@ -30,7 +30,7 @@
           <div class="row">
             <?php foreach ($upa as $upa) : ?>
             <div class="col-sm-3">
-              <a href="<?= base_url('kaderisasi/detailmutabaah/') . $upa['upa_id']; ?>">
+              <a href="<?= base_url('kaderisasi/tampilanggota/') . $upa['upa_id']; ?>">
                 <div class="small-box bg-primary">
                   <div class="inner">
                     <h4><?= $upa['nama_ketua']; ?></h4>
