@@ -31,12 +31,12 @@
 				  <thead>
 				    <tr>
 				      <th scope="col">#</th>
-				      <th scope="col">Email</th>
-				      <th scope="col">Name</th>
-				      <th scope="col">Role</th>
-				      <th scope="col">Active</th>
-				      <th scope="col">Date Modified</th>
-				      <th scope="col">Action</th>
+				      <th scope="col">Nama</th>
+				      <th scope="col">Level</th>
+				      <th scope="col">Grup</th>
+				      <th scope="col">Pembimbing UPA</th>
+              <th scope="col">SPU</th>
+				      <th scope="col">Edit UPA</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -46,14 +46,14 @@
 				  	?>
 				    <tr>
 				      <th scope="row"><?= $i; ?></th>
-				      <td><?= $user['email']; ?></td>
 				      <td><?= $user['name']; ?></td>
-				      <td><?= $user['role']; ?></td>
-				      <td><?= $user['is_active'] == 1 ? 'Yes' : 'No'; ?></td>
-				      <td><?= date('d-M-Y H:m:s', $user['date_modified']);?></td>
+				      <td><?= $user['nama_level']; ?></td>
+				      <td><?= $user['nama_upa']; ?></td>
+				      <td><?= $user['nama_ketua']; ?></td>
+				      <td><?= $user['nama_spu'];?></td>
 				      <td>
-				      		<a href="manageuser/<?= $user['id']; ?>" class="badge badge-success">edit</a>
-				      		<a href="javascript:hapusData(<?= $user['id']; ?>)" class="badge badge-danger">delete</a>
+				      		<a href="manageuser/<?= $user['user_id']; ?>" class="badge badge-success">edit</a>
+				      		<!-- <a href="javascript:hapusData(<?= $user['user_id']; ?>)" class="badge badge-danger">delete</a> -->
 				      </td>
 				    </tr>
 					<?php

@@ -456,37 +456,39 @@ class Kaderisasi extends CI_Controller
 
 	public function users()
 	{
-		$data['title'] = 'Kelola Anggota';
+		$data['title'] = 'Data Anggota';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->db->select('*');
-		$this->db->from('user_role');
-		$this->db->join('user', 'user_role.id = user.role_id');
-		$this->db->order_by('user_role.id', 'ASC');
+		$this->db->select('*, user.id AS user_id');
+		$this->db->from('user');
+		$this->db->join('upa', 'user.upa_id = upa.upa_id');
+		$this->db->join('spu', 'upa.spu_id = spu.id');
+		$this->db->join('level', 'upa.level_id = level.id');
+		$this->db->order_by('upa.level_id', 'ASC');
 		$this->db->order_by('user.name', 'ASC');
 		$data['users'] = $this->db->get()->result_array();
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('admin/users', $data);
+		$this->load->view('kaderisasi/users', $data);
 		$this->load->view('templates/footer');
 		
 	}
 
 	public function manageuser($id)
 	{
-		$data['title'] = 'Kelola Anggota';
+		$data['title'] = 'Data Anggota';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$data['role'] = $this->db->get('user_role')->result_array();
 		$this->db->select('*');
 		$this->db->from('user');
-		$this->db->join('user_role', 'user_role.id = user.role_id');
+		$this->db->join('upa', 'user.upa_id = upa.upa_id');
 		$this->db->where('user.id', $id);
-		$this->db->order_by('user_role.id', 'ASC');
 		$data['users'] = $this->db->get()->row_array();
-		
+
+		$this->db->order_by('nama_ketua', 'ASC');
+		$data['upa'] = $this->db->get_where('upa', ['jenis_kelamin' => $data['users']['gender']])->result_array();
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('role_id', 'Role', 'required|trim');
@@ -495,7 +497,7 @@ class Kaderisasi extends CI_Controller
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/topbar', $data);
 			$this->load->view('templates/sidebar', $data);
-			$this->load->view('admin/manage-user', $data);
+			$this->load->view('kaderisasi/manage-user', $data);
 			$this->load->view('templates/footer');
 		} else {
 			$email = $this->input->post('email');
