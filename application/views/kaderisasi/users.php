@@ -46,7 +46,7 @@
 				  	?>
 				    <tr>
 				      <th scope="row"><?= $i; ?></th>
-				      <td><?= $user['name']; ?></td>
+				      <td><?= strtoupper($user['name']); ?></td>
 				      <td><?= $user['nama_level']; ?></td>
 				      <td><?= $user['nama_upa']; ?></td>
 				      <td><?= $user['nama_ketua']; ?></td>
