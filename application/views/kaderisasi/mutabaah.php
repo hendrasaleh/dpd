@@ -79,7 +79,7 @@
 <script language="JavaScript" type="text/javascript">
   function hapusData(id){
     if (confirm("Apakah anda yakin akan menghapus data ini?")){
-        window.location.href = 'hapusmutabaah/' + id;
+        window.location.href = '<?= base_url('kaderisasi/hapusmutabaah/');?>' + id;
     }
   }
 </script>
