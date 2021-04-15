@@ -24,7 +24,7 @@
       <div class="card">
         <div class="card-body">
           <div class="box">
-            <form action="<?= base_url('user/inputmutabaah'); ?>" method="post">
+            <form action="<?= base_url('user/inputmutabaah_rmd'); ?>" method="post">
               <div class="box-header col-sm-6">
                 <?php if (validation_errors()) : ?>
                 <div class="alert alert-danger" role="alert">
@@ -33,6 +33,21 @@
                 <?php endif; ?>
               </div>
               <div class="box-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="tgl_rmd" class="col-sm-2 col-form-label"><h5><b>Hari ke:</b></h5></label>
+                      <div class="col-sm-8">
+                        <select name="tgl_rmd" id="tgl_rmd" class="form-control" required>
+                          <option value="7">1 - 7 Ramadhan</option>
+                          <option value="14">8 - 14 Ramadhan</option>
+                          <option value="21">15 - 21 Ramadhan</option>
+                          <option value="28">22 - 28 Ramadhan</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -233,31 +248,72 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td>1</td>
-                            <td>Tanggal pelaksanaan UPA</td>
-                            <td>Tanggal UPA</td>
+                            <td>14</td>
+                            <td>Membaca doa-doa harian</td>
+                            <td>7 kali</td>
                             <td>
-                              <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" name="tgl_upa" data-date-format="yyyy-mm-dd" required />
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Kehadiran UPA</td>
-                            <td>Hadir</td>
-                            <td>
-                              <select name="liqo" id="liqo" class="form-control" required>
-                                <option value="1">Hadir</option>
-                                <option value="0">Tidak Hadir</option>
+                              <select name="doa_harian" id="doa_harian" class="form-control" required>
+                                <option value="0">Tidak melaksanakan</option>
+                                <?php for ($i = 1; $i <= 7; $i++) : ?>
+                                <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
+                                <?php endfor; ?>
                               </select>
                             </td>
                           </tr>
                           <tr>
-                            <td>3</td>
+                            <td>15</td>
+                            <td>Membaca doa-doa sesuai situasi dan kondisi</td>
+                            <td>7 kali</td>
+                            <td>
+                              <select name="doa_sikon" id="doa_sikon" class="form-control" required>
+                                <option value="0">Tidak melaksanakan</option>
+                                <?php for ($i = 1; $i <= 7; $i++) : ?>
+                                <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
+                                <?php endfor; ?>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>16</td>
+                            <td>Membaca doa untuk kebaikan partai, pimpinan, dan anggota</td>
+                            <td>7 kali</td>
+                            <td>
+                              <select name="doa_partai" id="doa_partai" class="form-control" required>
+                                <option value="0">Tidak melaksanakan</option>
+                                <?php for ($i = 1; $i <= 7; $i++) : ?>
+                                <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
+                                <?php endfor; ?>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>17</td>
+                            <td>Membaca doa untuk kebaikan bangsa dan negara </td>
+                            <td>7 kali</td>
+                            <td>
+                              <select name="doa_bangsa" id="doa_bangsa" class="form-control" required>
+                                <option value="0">Tidak melaksanakan</option>
+                                <?php for ($i = 1; $i <= 7; $i++) : ?>
+                                <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
+                                <?php endfor; ?>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>18</td>
+                            <td>Membaca doa penguat soliditas partai</td>
+                            <td>7 kali</td>
+                            <td>
+                              <select name="doa_soliditas" id="doa_soliditas" class="form-control" required>
+                                <option value="0">Tidak melaksanakan</option>
+                                <?php for ($i = 1; $i <= 7; $i++) : ?>
+                                <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
+                                <?php endfor; ?>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>19</td>
                             <td>Shalat berjamaah / tepat waktu bagi akhwat</td>
                             <td>35 Kali</td>
                             <td>
@@ -270,37 +326,11 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>7</td>
-                            <td>Dzikir Tasbih, Tahmid, Takbir, Tahlil 100x / hari</td>
-                            <td>700 Kali</td>
-                            <td>
-                              <select name="dzikir_lain" id="dzikir_lain" class="form-control" required>
-                                <option value="0">Tidak melaksanakan</option>
-                                <?php for ($i = 1; $i <= 7; $i++) : ?>
-                                <option value="<?= $i; ?>"><?= $i . '00 kali'; ?></option>
-                                <?php endfor; ?>
-                              </select>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>8</td>
-                            <td>Membaca sholawat 100x / hari</td>
-                            <td>700 Kali</td>
-                            <td>
-                              <select name="shalawat" id="shalawat" class="form-control" required>
-                                <option value="0">Tidak melaksanakan</option>
-                                <?php for ($i = 1; $i <= 7; $i++) : ?>
-                                <option value="<?= $i; ?>"><?= $i . '00 kali'; ?></option>
-                                <?php endfor; ?>
-                              </select>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>9</td>
-                            <td>Qiyamullail</td>
+                            <td>20</td>
+                            <td>Tarawih berjamaah</td>
                             <td>7 Kali</td>
                             <td>
-                              <select name="qiyamullail" id="qiyamullail" class="form-control" required>
+                              <select name="tarawih" id="tarawih" class="form-control" required>
                                 <option value="0">Tidak melaksanakan</option>
                                 <?php for ($i = 1; $i <= 7; $i++) : ?>
                                 <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
@@ -309,11 +339,44 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>10</td>
-                            <td>Shalat Dhuha</td>
+                            <td>21</td>
+                            <td>Shalat tasbih</td>
+                            <td>1 kali</td>
+                            <td>
+                              <select name="shalat_tasbih" id="shalat_tasbih" class="form-control" required>
+                                <option value="1">Terlaksana</option>
+                                <option value="0">Tidak </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>22</td>
+                            <td>Shalat istikhoroh</td>
+                            <td>1 kali</td>
+                            <td>
+                              <select name="shalat_istikhoroh" id="shalat_istikhoroh" class="form-control" required>
+                                <option value="1">Terlaksana</option>
+                                <option value="0">Tidak </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>23</td>
+                            <td>Shalat hajat</td>
+                            <td>1 kali</td>
+                            <td>
+                              <select name="shalat_hajat" id="shalat_hajat" class="form-control" required>
+                                <option value="1">Terlaksana</option>
+                                <option value="0">Tidak </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>24</td>
+                            <td>Melaksanakan evaluasi diri setiap menjelang tidur</td>
                             <td>7 Kali</td>
                             <td>
-                              <select name="dhuha" id="dhuha" class="form-control" required>
+                              <select name="evaluasi_diri" id="evaluasi_diri" class="form-control" required>
                                 <option value="0">Tidak melaksanakan</option>
                                 <?php for ($i = 1; $i <= 7; $i++) : ?>
                                 <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
@@ -322,11 +385,11 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>11</td>
-                            <td>Membantu/melaksanakan pekerjaan rumah</td>
+                            <td>25</td>
+                            <td>Melaksanakan i'tikaf</td>
                             <td>7 Kali</td>
                             <td>
-                              <select name="bantu_prt" id="bantu_prt" class="form-control" required>
+                              <select name="itikaf" id="itikaf" class="form-control" required>
                                 <option value="0">Tidak melaksanakan</option>
                                 <?php for ($i = 1; $i <= 7; $i++) : ?>
                                 <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
@@ -335,39 +398,13 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>12</td>
-                            <td>Infaq/sedekah</td>
-                            <td>Ya</td>
+                            <td>26</td>
+                            <td>Ziarah kubur</td>
+                            <td>1 kali</td>
                             <td>
-                              <select name="infaq" id="infaq" class="form-control" required>
-                                <option value="1">Ya</option>
-                                <option value="0">Tidak</option>
-                              </select>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>13</td>
-                            <td>Shaum sunnah</td>
-                            <td>2 Kali</td>
-                            <td>
-                              <select name="shaum_sunnah" id="shaum_sunnah" class="form-control" required>
-                                <option value="0">Tidak melaksanakan</option>
-                                <option value="1">1 kali</option>
-                                <option value="2">2 kali atau lebih</option>
-                              </select>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>14</td>
-                            <td>Olah raga</td>
-                            <td>4 Kali</td>
-                            <td>
-                              <select name="olah_raga" id="olah_raga" class="form-control" required>
-                                <option value="0">Tidak melaksanakan</option>
-                                <?php for ($i = 1; $i <= 3; $i++) : ?>
-                                <option value="<?= $i; ?>"><?= $i . ' kali'; ?></option>
-                                <?php endfor; ?>
-                                <option value="4">4 kali atau lebih</option>
+                              <select name="ziarah_qubur" id="ziarah_qubur" class="form-control" required>
+                                <option value="1">Terlaksana</option>
+                                <option value="0">Tidak </option>
                               </select>
                             </td>
                           </tr>

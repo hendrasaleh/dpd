@@ -337,7 +337,7 @@ class User extends CI_Controller
 
 	public function mutabaah_rmd()
 	{
-		$data['title'] = 'Data Evaluasi';
+		$data['title'] = 'Data Evaluasi Ramadhan';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->db->select('*');
@@ -358,25 +358,12 @@ class User extends CI_Controller
 
 	public function inputMutabaah_rmd()
 	{
-		$data['title'] = 'Data Evaluasi';
+		$data['title'] = 'Data Evaluasi Ramadhan';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		// $this->form_validation->set_rules('tgl_upa', 'Tanggal pelaksanaan UPA', 'required|trim');
-		// $this->form_validation->set_rules('liqo', 'Kehadiran UPA', 'required|trim');
-		// $this->form_validation->set_rules('berjamaah', 'Shalat berjamaah', 'required|trim');
-		// $this->form_validation->set_rules('tilawah', 'Tilawah', 'required|trim');
-		// $this->form_validation->set_rules('dzikir_pagi', 'Dzikir pagi', 'required|trim');
-		// $this->form_validation->set_rules('dzikir_petang', 'Dzikir petang', 'required|trim');
-		// $this->form_validation->set_rules('dzikir_lain', 'Dzikir Tasbih', 'required|trim');
-		// $this->form_validation->set_rules('shalawat', 'Shalawat', 'required|trim');
-		// $this->form_validation->set_rules('qiyamullail', 'Qiyamullail', 'required|trim');
-		// $this->form_validation->set_rules('dhuha', 'Shalat Dhuha', 'required|trim');
-		// $this->form_validation->set_rules('bantu_prt', 'Pekerjaan rumah', 'required|trim');
-		// $this->form_validation->set_rules('infaq', 'Infaq', 'required|trim');
-		// $this->form_validation->set_rules('shaum_sunnah', 'Shaum sunnah', 'required|trim');
-		// $this->form_validation->set_rules('olah_raga', 'Olah raga', 'required|trim');
+		$this->form_validation->set_rules('email', 'Username', 'required|trim');
 
-		// if( $this->form_validation->run() == false ) {
+		if( $this->form_validation->run() == false ) {
 		
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/topbar', $data);
@@ -384,47 +371,83 @@ class User extends CI_Controller
 			$this->load->view('user/input-mutabaah2', $data);
 			$this->load->view('templates/footer');
 		
-		// } else {
+		} else {
 
-		// 	$dzikir_lain = $this->input->post('dzikir_lain')*100;
-		// 	$shalawat = $this->input->post('shalawat')*100;
-		// 	$tilawah = $this->input->post('tilawah')*10;
-		// 	if (is_null($this->input->post('haid_nifas'))) {
-		// 		$haid_nifas = 0;
-		// 	} else {
-		// 		$haid_nifas = $this->input->post('haid_nifas');
-		// 	}
-		// 	$data = [
-		// 				'tanggal' => time(),
-		// 				'email' => $this->input->post('email'),
-		// 				'upa_id' => $this->input->post('upa_id'),
-		// 				'tgl_upa' => strtotime($this->input->post('tgl_upa')),
-		// 				'liqo' => $this->input->post('liqo'),
-		// 				'qiyamullail' => $this->input->post('qiyamullail'),
-		// 				'dhuha' => $this->input->post('dhuha'),
-		// 				'tilawah' => $tilawah,
-		// 				'bantu_prt' => $this->input->post('bantu_prt'),
-		// 				'dzikir_pagi' => $this->input->post('dzikir_pagi'),
-		// 				'infaq' => $this->input->post('infaq'),
-		// 				'shaum_sunnah' => $this->input->post('shaum_sunnah'),
-		// 				'dzikir_petang' => $this->input->post('dzikir_petang'),
-		// 				'olah_raga' => $this->input->post('olah_raga'),
-		// 				'dzikir_lain' => $dzikir_lain,
-		// 				'berjamaah' => $this->input->post('berjamaah'),
-		// 				'shalawat' => $shalawat,
-		// 				'haid_nifas' => $haid_nifas,
-		// 				'jumlah' => $this->input->post('liqo')+$this->input->post('qiyamullail')+$this->input->post('dhuha')+$tilawah+$this->input->post('bantu_prt')+$this->input->post('dzikir_pagi')+$this->input->post('infaq')+$this->input->post('shaum_sunnah')+$this->input->post('dzikir_petang')+$this->input->post('olah_raga')+$dzikir_lain+$this->input->post('berjamaah')+$shalawat
-		// 	];
+			$tilawah = $this->input->post('tilawah');
+			$yasin = $this->input->post('yasin');
+			$dukhon = $this->input->post('dukhon');
+			$waqiah = $this->input->post('waqiah');
+			$mulk = $this->input->post('mulk');
+			$kahfi = $this->input->post('kahfi');
+			$ali_imron = $this->input->post('ali_imron');
+			$dzikir_pagi = $this->input->post('dzikir_pagi');
+			$dzikir_petang = $this->input->post('dzikir_petang');
+			$hafal_ayat = $this->input->post('hafal_ayat');
+			$istighfar = $this->input->post('istighfar')*100;
+			$shalawat = $this->input->post('shalawat')*100;
+			$tahlil = $this->input->post('tahlil')*100;
+			$doa_harian = $this->input->post('doa_harian');
+			$doa_sikon = $this->input->post('doa_sikon');
+			$doa_partai = $this->input->post('doa_partai');
+			$doa_bangsa = $this->input->post('doa_bangsa');
+			$doa_soliditas = $this->input->post('doa_soliditas');
+			$berjamaah = $this->input->post('berjamaah');
+			$tarawih = $this->input->post('tarawih');
+			$shalat_tasbih = $this->input->post('shalat_tasbih');
+			$shalat_istikhoroh = $this->input->post('shalat_istikhoroh');
+			$shalat_hajat = $this->input->post('shalat_hajat');
+			$evaluasi_diri = $this->input->post('evaluasi_diri');
+			$itikaf = $this->input->post('itikaf');
+			$ziarah_qubur = $this->input->post('ziarah_qubur');
+			if (is_null($this->input->post('haid_nifas'))) {
+				$haid_nifas = 0;
+			} else {
+				$haid_nifas = $this->input->post('haid_nifas');
+			}
+			$data = [
+						'tanggal' => time(),
+						'email' => $this->input->post('email'),
+						'upa_id' => $this->input->post('upa_id'),
+						'tgl_rmd' => $this->input->post('tgl_rmd'),
+						'tilawah' => $tilawah,
+						'yasin' => $yasin,
+						'dukhon' => $dukhon,
+						'waqiah' => $waqiah,
+						'mulk' => $mulk,
+						'kahfi' => $kahfi,
+						'ali_imron' => $ali_imron,
+						'dzikir_pagi' => $dzikir_pagi,
+						'dzikir_petang' => $dzikir_petang,
+						'hafal_ayat' => $hafal_ayat,
+						'istighfar' => $istighfar,
+						'shalawat' => $shalawat,
+						'tahlil' => $tahlil,
+						'doa_harian' => $doa_harian,
+						'doa_sikon' => $doa_sikon,
+						'doa_partai' => $doa_partai,
+						'doa_bangsa' => $doa_bangsa,
+						'doa_soliditas' => $doa_soliditas,
+						'berjamaah' => $berjamaah,
+						'tarawih' => $tarawih,
+						'shalat_tasbih' => $shalat_tasbih,
+						'shalat_istikhoroh' => $shalat_istikhoroh,
+						'shalat_hajat' => $shalat_hajat,
+						'evaluasi_diri' => $evaluasi_diri,
+						'itikaf' => $itikaf,
+						'ziarah_qubur' => $ziarah_qubur,
+						'haid_nifas' => $haid_nifas,
+						'jumlah' => $tilawah + $yasin + $dukhon + $waqiah + $mulk + $kahfi + $ali_imron + $dzikir_pagi + $dzikir_petang + $hafal_ayat + $istighfar + $shalawat + $tahlil + $doa_harian + $doa_sikon + $doa_partai + $doa_bangsa + $doa_soliditas + $berjamaah + $tarawih + $shalat_tasbih + $shalat_istikhoroh + $shalat_hajat + $evaluasi_diri + $itikaf + $ziarah_qubur
+			];
 
-		// 	$this->db->insert('mutabaah', $data);
-		// 	$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-success" role="alert"> Data berhasil ditambahkan.</div>');
-		// 	redirect('user/mutabaah');
-		// }
+			$this->db->insert('mutabaah_rmd', $data);
+			$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-success" role="alert"> Data berhasil ditambahkan.</div>');
+			redirect('user/mutabaah_rmd');
+		}
 	}
 
 	public function detailmutabaah_rmd($id)
 	{
-		$data['title'] = 'Data Evaluasi';
+		$data['title'] = 'Data Evaluasi Ramadhan';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->db->select('*');
