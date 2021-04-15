@@ -27,13 +27,14 @@
             <?= $this->session->flashdata('message'); ?>
             <h5><?= $anggota['name']; ?></h5>
             <p class="mb-0"><b>Pembimbing : <?= $anggota['nama_ketua']; ?></b></p>
+            <a class="btn btn-info mt-3 mb-3" href="<?= base_url('user/inputmutabaah_rmd'); ?>">Input Data</a>
           </div>
           <div class="box-body">
             <table class="table table-striped table-hover table-responsive">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Tanggal UPA</th>
+                  <th>Tanggal Ramadhan</th>
                   <th>Tanggal Input Data</th>
                   <th>Capaian</th>
                   <th>Ketarangan</th>
@@ -48,12 +49,12 @@
                 ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>
-                  <td><?= tanggal_indo(date('Y-m-d', $mtb['tgl_upa'])); ?></td>
+                  <td><?= tanggal_indo(date('Y-m-d', $mtb['tgl_rmd'])); ?></td>
                   <td><?= tanggal_indo(date('Y-m-d', $mtb['tanggal'])); ?></td>
                   <td><?= number_format(($mtb['jumlah']/1593)*100, 2).'%'; ?></td>
                   <td><?= $mtb['haid_nifas'] == 1 ? 'Sedang berhalangan (haid/nifas)' : '-'; ?></td>
                   <td>
-                    <a href="<?= base_url('kaderisasi/detailmutabaah/') . $mtb['mtb_id']; ?>" class="badge badge-success">detail</a>
+                    <a href="<?= base_url('user/detailmutabaah_rmd/') . $mtb['mtb_id']; ?>" class="badge badge-success">detail</a>
                   </td>
                   <td>
                     <a href="javascript:hapusData(<?= $mtb['mtb_id']; ?>)" class="badge badge-danger">hapus</a>
@@ -69,7 +70,7 @@
         </div>
       </div>
       <div class="card-footer">
-          <a class="btn btn-warning" href="<?= base_url('kaderisasi/tampilanggota/').$anggota['upa_id']; ?>">Kembali</a>
+          <a class="btn btn-warning" href="<?= base_url('user'); ?>">Kembali</a>
         </div>
     </section>
     <!-- /.content -->
@@ -79,7 +80,7 @@
 <script language="JavaScript" type="text/javascript">
   function hapusData(id){
     if (confirm("Apakah anda yakin akan menghapus data ini?")){
-        window.location.href = '<?= base_url('kaderisasi/hapusmutabaah/');?>' + id;
+        window.location.href = 'hapusmutabaah_rmd/' + id;
     }
   }
 </script>

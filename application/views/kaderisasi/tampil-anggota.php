@@ -65,7 +65,7 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $mtb['name']; ?></td>
-                  <td><?= number_format(($mtb['jumlah']/(4*1460)*100), 2).'%'; ?></td>
+                  <td><?= number_format(($mtb['jumlah']/(4*1593)*100), 2).'%'; ?></td>
                   <td><a href="<?= base_url('kaderisasi/mutabaah/') . $mtb['id']; ?>" class="badge badge-success">detail</a></td>
                 </tr>
                 <?php 

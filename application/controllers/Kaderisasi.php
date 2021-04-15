@@ -454,6 +454,20 @@ class Kaderisasi extends CI_Controller
 
 	}
 
+	public function hapusMutabaah($id)
+	{
+		$this->db->select('*');
+		$this->db->from('mutabaah');
+		$this->db->join('upa', 'upa.upa_id = mutabaah.upa_id');
+		$this->db->where('mtb_id', $id);
+		$upa = $this->db->get()->row_array();
+		$no = $upa['upa_id'];
+
+		$this->db->delete('mutabaah', ['mtb_id' => $id]);
+		$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-danger" role="alert"> Data berhasil dihapus!</div>');
+		redirect("kaderisasi/tampilanggota/$no");
+	}
+
 	public function users()
 	{
 		$data['title'] = 'Data Anggota';
