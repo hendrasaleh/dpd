@@ -335,4 +335,120 @@ class User extends CI_Controller
 		redirect('user/mutabaah');
 	}
 
+	public function mutabaah_rmd()
+	{
+		$data['title'] = 'Data Evaluasi';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('upa');
+		$this->db->join('user', 'user.upa_id = upa.upa_id');
+		$this->db->where('user.email', $this->session->userdata('email'));
+		$data['anggota'] = $this->db->get()->row_array();
+
+		$data['mutabaah'] = $this->db->get_where('mutabaah_rmd', ['email' => $this->session->userdata('email')])->result_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('user/mutabaah-ramadhan', $data);
+		$this->load->view('templates/footer');
+
+	}
+
+	public function inputMutabaah_rmd()
+	{
+		$data['title'] = 'Data Evaluasi';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		// $this->form_validation->set_rules('tgl_upa', 'Tanggal pelaksanaan UPA', 'required|trim');
+		// $this->form_validation->set_rules('liqo', 'Kehadiran UPA', 'required|trim');
+		// $this->form_validation->set_rules('berjamaah', 'Shalat berjamaah', 'required|trim');
+		// $this->form_validation->set_rules('tilawah', 'Tilawah', 'required|trim');
+		// $this->form_validation->set_rules('dzikir_pagi', 'Dzikir pagi', 'required|trim');
+		// $this->form_validation->set_rules('dzikir_petang', 'Dzikir petang', 'required|trim');
+		// $this->form_validation->set_rules('dzikir_lain', 'Dzikir Tasbih', 'required|trim');
+		// $this->form_validation->set_rules('shalawat', 'Shalawat', 'required|trim');
+		// $this->form_validation->set_rules('qiyamullail', 'Qiyamullail', 'required|trim');
+		// $this->form_validation->set_rules('dhuha', 'Shalat Dhuha', 'required|trim');
+		// $this->form_validation->set_rules('bantu_prt', 'Pekerjaan rumah', 'required|trim');
+		// $this->form_validation->set_rules('infaq', 'Infaq', 'required|trim');
+		// $this->form_validation->set_rules('shaum_sunnah', 'Shaum sunnah', 'required|trim');
+		// $this->form_validation->set_rules('olah_raga', 'Olah raga', 'required|trim');
+
+		// if( $this->form_validation->run() == false ) {
+		
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('user/input-mutabaah2', $data);
+			$this->load->view('templates/footer');
+		
+		// } else {
+
+		// 	$dzikir_lain = $this->input->post('dzikir_lain')*100;
+		// 	$shalawat = $this->input->post('shalawat')*100;
+		// 	$tilawah = $this->input->post('tilawah')*10;
+		// 	if (is_null($this->input->post('haid_nifas'))) {
+		// 		$haid_nifas = 0;
+		// 	} else {
+		// 		$haid_nifas = $this->input->post('haid_nifas');
+		// 	}
+		// 	$data = [
+		// 				'tanggal' => time(),
+		// 				'email' => $this->input->post('email'),
+		// 				'upa_id' => $this->input->post('upa_id'),
+		// 				'tgl_upa' => strtotime($this->input->post('tgl_upa')),
+		// 				'liqo' => $this->input->post('liqo'),
+		// 				'qiyamullail' => $this->input->post('qiyamullail'),
+		// 				'dhuha' => $this->input->post('dhuha'),
+		// 				'tilawah' => $tilawah,
+		// 				'bantu_prt' => $this->input->post('bantu_prt'),
+		// 				'dzikir_pagi' => $this->input->post('dzikir_pagi'),
+		// 				'infaq' => $this->input->post('infaq'),
+		// 				'shaum_sunnah' => $this->input->post('shaum_sunnah'),
+		// 				'dzikir_petang' => $this->input->post('dzikir_petang'),
+		// 				'olah_raga' => $this->input->post('olah_raga'),
+		// 				'dzikir_lain' => $dzikir_lain,
+		// 				'berjamaah' => $this->input->post('berjamaah'),
+		// 				'shalawat' => $shalawat,
+		// 				'haid_nifas' => $haid_nifas,
+		// 				'jumlah' => $this->input->post('liqo')+$this->input->post('qiyamullail')+$this->input->post('dhuha')+$tilawah+$this->input->post('bantu_prt')+$this->input->post('dzikir_pagi')+$this->input->post('infaq')+$this->input->post('shaum_sunnah')+$this->input->post('dzikir_petang')+$this->input->post('olah_raga')+$dzikir_lain+$this->input->post('berjamaah')+$shalawat
+		// 	];
+
+		// 	$this->db->insert('mutabaah', $data);
+		// 	$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-success" role="alert"> Data berhasil ditambahkan.</div>');
+		// 	redirect('user/mutabaah');
+		// }
+	}
+
+	public function detailmutabaah_rmd($id)
+	{
+		$data['title'] = 'Data Evaluasi';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('upa');
+		$this->db->join('user', 'user.upa_id = upa.upa_id');
+		$this->db->where('user.email', $this->session->userdata('email'));
+		$data['anggota'] = $this->db->get()->row_array();
+
+		$data['mutabaah'] = $this->db->get_where('mutabaah', ['mtb_id' => $id])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('user/detail-mutabaah', $data);
+		$this->load->view('templates/footer');
+
+	}
+
+	public function hapusMutabaah_rmd($id)
+	{
+		
+		$this->db->delete('mutabaah', ['mtb_id' => $id]);
+		$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-danger" role="alert"> Data berhasil dihapus!</div>');
+		redirect('user/mutabaah');
+	}
+
 }
