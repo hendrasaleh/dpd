@@ -456,12 +456,12 @@ class User extends CI_Controller
 		$this->db->where('user.email', $this->session->userdata('email'));
 		$data['anggota'] = $this->db->get()->row_array();
 
-		$data['mutabaah'] = $this->db->get_where('mutabaah', ['mtb_id' => $id])->row_array();
+		$data['mutabaah'] = $this->db->get_where('mutabaah_rmd', ['mtb_id' => $id])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
-		$this->load->view('user/detail-mutabaah', $data);
+		$this->load->view('user/detail-mutabaah-rmd', $data);
 		$this->load->view('templates/footer');
 
 	}
@@ -469,9 +469,9 @@ class User extends CI_Controller
 	public function hapusMutabaah_rmd($id)
 	{
 		
-		$this->db->delete('mutabaah', ['mtb_id' => $id]);
+		$this->db->delete('mutabaah_rmd', ['mtb_id' => $id]);
 		$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-danger" role="alert"> Data berhasil dihapus!</div>');
-		redirect('user/mutabaah');
+		redirect('user/mutabaah_rmd');
 	}
 
 }

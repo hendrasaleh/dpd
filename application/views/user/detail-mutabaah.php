@@ -204,7 +204,7 @@
               <?php endif; ?>
             </div>
             <div class="box-footer mt-2">
-              <a class="btn btn-warning" href="<?= base_url('user/mutabaah'); ?>">Back</a>
+              <a class="btn btn-warning" href="<?= base_url('user/mutabaah'); ?>">Kembali</a>
             </div>
           </div>
         </div>
