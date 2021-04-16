@@ -133,6 +133,27 @@ class Admin extends CI_Controller
 		
 	}
 
+	public function mutabaah($id)
+	{
+		$data['title'] = 'Mutabaah Anggota';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('upa');
+		$this->db->join('user', 'user.upa_id = upa.upa_id');
+		$this->db->where('user.id', $id);
+		$data['anggota'] = $this->db->get()->row_array();
+
+		$data['mutabaah'] = $this->db->get_where('mutabaah', ['email' => $data['anggota']['email']])->result_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/mutabaah', $data);
+		$this->load->view('templates/footer');
+
+	}
+
 	public function manageuser($id)
 	{
 		$data['title'] = 'Manage User';
