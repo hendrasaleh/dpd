@@ -25,7 +25,7 @@
         <div class="card-body">
           <div class="box-header">
             <?= $this->session->flashdata('message'); ?>
-            <h5><?= $anggota['name']; ?></h5>
+            <h5><?= $anggota['name'] . ' / ' . $anggota['email']; ?></h5>
             <p class="mb-0"><b>Pembimbing : <?= $anggota['nama_ketua']; ?></b></p>
           </div>
           <div class="box-body">
