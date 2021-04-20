@@ -33,6 +33,13 @@
 							</div>
 						</div>
 						<div class="form-group row">
+							<label for="nik" class="col-sm-4 col-form-label">NIK</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="nik" name="nik" value="<?= $detail['nik']; ?>">
+								<?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="form-group row">
 							<label for="name" class="col-sm-4 col-form-label">Nama Lengkap</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">

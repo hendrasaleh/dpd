@@ -47,6 +47,18 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+                  <h5 class="card-title col-sm-4"><b>Nomor Induk Kependudukan (NIK)</b></h5>
+                  <div class="col-sm-8">
+                    <h5 class="card-title">
+                      <?php if ($detail['nik'] == NULL) : ?>
+                        <h5 class="card-title">Belum diisi</h5>
+                      <?php else : ?>
+                        <h5 class="card-title"><?= $detail['nik']; ?></h5>
+                      <?php endif; ?>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row mb-3">
                   <h5 class="card-title col-sm-4"><b>Jenis Kelamin</b></h5>
                   <div class="col-sm-8">
                     <h5 class="card-title"><?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?></h5>
@@ -62,12 +74,12 @@
                     <?php endif; ?>
                   </div>
                 </div>
-                <div class="row">
-                  <h5 class="card-title col-sm-4"><b>No. Handphone (WA)</b></h5>
-                  <div class="col-sm-8">
-                    <h5 class="card-title"><?= $user['email']; ?></h5>
-                  </div>
-                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <h5 class="card-title col-sm-4"><b>No. Handphone (WA)</b></h5>
+              <div class="col-sm-8">
+                <h5 class="card-title"><?= $user['email']; ?></h5>
               </div>
             </div>
             <div class="row mb-2">

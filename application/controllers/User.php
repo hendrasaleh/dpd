@@ -73,6 +73,7 @@ class User extends CI_Controller
 			$date_modified = time();
 			// data2
 			$nickname = $this->input->post('nickname');
+			$nik = $this->input->post('nik');
 			$tempat_lahir = strtoupper($this->input->post('tempat_lahir'));
 			$tgl_lahir = strtotime($this->input->post('tgl_lahir'));
 			$hobi = strtoupper($this->input->post('hobi'));
@@ -128,6 +129,7 @@ class User extends CI_Controller
 
 			$data2 = [
 				'nickname' => $nickname,
+				'nik' => $nik,
 				'tempat_lahir' => $tempat_lahir,
 				'tgl_lahir' => $tgl_lahir,
 				'hobi' => $hobi,
