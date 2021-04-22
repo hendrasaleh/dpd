@@ -428,7 +428,7 @@
                 <input type="hidden" name="email" value="<?= $user['email']; ?>">
                 <input type="hidden" name="upa_id" value="<?= $user['upa_id']; ?>">
                 <button class="btn btn-success" type="submit" name="tamu-add">Submit</button>
-                <a class="btn btn-warning" href="<?= base_url('user/mutabaah'); ?>">Batal</a>
+                <a class="btn btn-warning" href="<?= base_url('user/mutabaah_rmd'); ?>">Batal</a>
               </div>
             </form>
           </div>
