@@ -49,7 +49,24 @@
                 ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>
-                  <td><?= tanggal_indo(date('Y-m-d', $mtb['tgl_rmd'])); ?></td>
+                  <td>
+                    <?php
+                      switch ($mtb['tgl_rmd']) {
+                        case '28':
+                          echo 'Hari ke 22 - 28';
+                          break;
+                        case '21':
+                          echo 'Hari ke 15 - 21';
+                          break;
+                        case '14':
+                          echo 'Hari ke 8 - 14';
+                          break;
+                        default:
+                          echo 'Hari ke 1 - 7';
+                          break;
+                      }
+                      ?>
+                  </td>
                   <td><?= tanggal_indo(date('Y-m-d', $mtb['tanggal'])); ?></td>
                   <td><?=  number_format(($mtb['jumlah']/2328)*100, 2).'%'; ?></td>
                   <td><?= $mtb['haid_nifas'] == 1 ? 'Sedang berhalangan (haid/nifas)' : '-'; ?></td>
