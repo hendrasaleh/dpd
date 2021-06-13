@@ -79,6 +79,7 @@ class Auth extends CI_Controller
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('j_kelamin', 'Jenis Kelamin', 'required|trim');
+		$this->form_validation->set_rules('nama_ketua', 'Ketua UPA', 'required|trim');
 		$this->form_validation->set_rules('provinsi', 'Provinsi', 'required|trim');
 		$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required|trim');
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
@@ -103,6 +104,7 @@ class Auth extends CI_Controller
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($email),
 				'gender' => $this->input->post('j_kelamin'),
+				'upa_id' => $this->input->post('nama_ketua'),
 				'province_id' => $this->input->post('provinsi'),
 				'regency_id' => $this->input->post('kabupaten'),
 				'district_id' => $this->input->post('kecamatan'),
