@@ -505,7 +505,7 @@ class Kaderisasi extends CI_Controller
 		$data['upa'] = $this->db->get_where('upa', ['jenis_kelamin' => $data['users']['gender']])->result_array();
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
-		$this->form_validation->set_rules('role_id', 'Role', 'required|trim');
+		$this->form_validation->set_rules('upa_id', 'Nama ketua', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);
@@ -515,20 +515,18 @@ class Kaderisasi extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			$email = $this->input->post('email');
-			$new_password = $this->input->post('new_password');
-			$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+			
 			$data = [
 				'name' => htmlspecialchars($this->input->post('name', true)),
-				'role_id' => $this->input->post('role_id'),
-				'password' => $password_hash,
 				'is_active' => $this->input->post('is_active'),
+				'upa_id' => $this->input->post('upa_id'),
 				'date_modified' => time()
 			];
 
 			$this->db->where('email', $email);
 			$this->db->update('user', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> User edited!</div>');
-			redirect('admin/users');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Data berhasil diubah!</div>');
+			redirect('kaderisasi/users');
 		}
 
 	}
