@@ -39,7 +39,7 @@
         </div>
         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" id="email" name="email" placeholder="No handphone (WA)" value="<?= set_value('email'); ?>" required>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Nomor WA, Misal: 081234567899" value="<?= set_value('email'); ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-phone"></span>

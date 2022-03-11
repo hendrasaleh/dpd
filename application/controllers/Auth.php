@@ -99,7 +99,7 @@ class Auth extends CI_Controller
 		$this->load->view('auth/registration');
 		$this->load->view('templates/auth_footer');
 		} else {
-			$email = $this->input->post('email');
+			$email = str_replace($this->input->post('email'), "", " ");
 			$data = [
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($email),
@@ -212,11 +212,46 @@ class Auth extends CI_Controller
 		}
 	}
 
+	public function forgotPassword()
+	{
+
+		$this->form_validation->set_rules('email', 'Nomor', 'required|trim');
+
+		if ( $this->form_validation->run() == false) {
+			$data['title'] = 'Lupa Password';
+			$this->load->view('templates/auth_header', $data);
+			$this->load->view('auth/forgot-password');
+			$this->load->view('templates/auth_footer');
+		} else{
+			$email = $this->input->post('email');
+
+			$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+			if ($user) {
+
+				// siapkan token
+				$token = base64_encode(random_bytes(32));
+				$user_token = [
+						'email' => $email,
+						'token' => $token
+				];
+
+				$this->db->insert('user_token', $user_token);
+
+				// $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Nomor benar!</div>');
+				redirect('https://wa.me/6287839137195?text='.$email.'/'.urlencode($token));
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Nomor yang anda masukkan belum terdaftar!</div>');
+				redirect('auth/forgotPassword');
+			}
+		}
+	}
+
 	public function is_number()
 	{
 		$user = $this->input->post('email');
 		if (!is_numeric($user)) {
-			$this->form_validation->set_message('is_number', 'Nomor handphone salah.');
+			$this->form_validation->set_message('is_number', 'Nomor WA salah. Masukkan angka saja!');
                     return FALSE;
 		} else {
 			return TRUE;

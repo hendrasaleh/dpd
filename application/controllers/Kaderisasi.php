@@ -14,18 +14,16 @@ class Kaderisasi extends CI_Controller
 		$data['title'] = 'Dashboard Kaderisasi';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		// $data['kecamatan'] = $this->db->query("SELECT `reg_districts`.`name` AS 'kecamatan', COUNT(`reg_districts`.`name`) AS 'jml_kec' FROM `user` JOIN `reg_districts` ON `user`.`district_id` = `reg_districts`.`id` GROUP BY `district_id`")->result_array();
-		// $data['spu'] = $this->db->query("SELECT `spu`.`nama_spu` AS 'nama_spu', COUNT(`upa`.`spu_id`) AS 'jml_spu' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `spu` ON `upa`.`spu_id` = `spu`.`id` GROUP BY `upa`.`spu_id`")->result_array();
-		// $data['akhwat'] = $this->db->query("SELECT `level`.`nama_level` AS 'nama_level', COUNT(`level`.`id`) AS 'jml_level' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `level` ON `upa`.`level_id` = `level`.`id` WHERE `user`.`gender` = 0 GROUP BY `level`.`id`")->result_array();
-		// $data['ikhwan'] = $this->db->query("SELECT `level`.`nama_level` AS 'nama_level', COUNT(`level`.`id`) AS 'jml_level' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `level` ON `upa`.`level_id` = `level`.`id` WHERE `user`.`gender` = 1 GROUP BY `level`.`id`")->result_array();		
+		$data['kecamatan'] = $this->db->query("SELECT `reg_districts`.`name` AS 'kecamatan', COUNT(`reg_districts`.`name`) AS 'jml_kec' FROM `user` JOIN `reg_districts` ON `user`.`district_id` = `reg_districts`.`id` GROUP BY `district_id`")->result_array();
+		$data['spu'] = $this->db->query("SELECT `spu`.`nama_spu` AS 'nama_spu', COUNT(`upa`.`spu_id`) AS 'jml_spu' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` JOIN `spu` ON `upa`.`spu_id` = `spu`.`id` GROUP BY `upa`.`spu_id`")->result_array();
+		$data['dewasa'] = $this->db->query("SELECT `user`.`gender` AS 'j_kelamin', COUNT(`user`.`gender`) AS 'jumlah' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` WHERE `upa`.`level_id` = 6 GROUP BY `user`.`gender`")->result_array();
+		$data['madya'] = $this->db->query("SELECT `user`.`gender` AS 'j_kelamin', COUNT(`user`.`gender`) AS 'jumlah' FROM `user` JOIN `upa` ON `user`.`upa_id` = `upa`.`upa_id` WHERE `upa`.`level_id` = 5 GROUP BY `user`.`gender`")->result_array();
 
-		// $this->load->view('templates/header', $data);
-		// $this->load->view('templates/topbar', $data);
-		// $this->load->view('templates/sidebar', $data);
-		// $this->load->view('kaderisasi/index', $data);
-		// $this->load->view('templates/footer');
-
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/sidebar', $data);
 		$this->load->view('kaderisasi/index', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function dataSPU()
@@ -71,7 +69,7 @@ class Kaderisasi extends CI_Controller
 
 			$this->db->insert('spu', $data);
 			$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-success" role="alert"> Data berhasi ditambahkan.</div>');
-			redirect("kaderisasi");
+			redirect("kaderisasi/dataspu");
 		}
 	}
 
